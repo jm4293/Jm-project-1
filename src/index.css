@@ -1,0 +1,41 @@
+/*App.js*/
+.root {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -75%);
+}
+
+.login {
+    display: flex;
+    justify-content: right;
+}
+
+.header {
+    display: flex;
+    background-color: snow;
+}
+
+/*Header.jsx*/
+.header-menu-container {
+    border-right: 1px solid black;
+}
+
+.header-menu-wrap {
+    
+}
+
+.header-menu-list {
+    
+}
+
+.header-menu-list ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.header-menu-list li {
+    margin-top: 20px;
+    margin-left: 25px;
+    font-weight: 600;
+}

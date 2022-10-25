@@ -6,12 +6,34 @@ function Header() {
         <div className='header-menu-container'>
             <div className='header-menu-wrap'>
                 <div className='header-menu-list'>
-                    <Link to='.'>
+                    <Link to='/'>
                         <img
-                            src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg'
+                            style={{ width: "90px", height:"70px", margin:"20px 5px"}}
+                            src='/images/logo.png'
                             alt='로고'
                         />
                     </Link>
+                    <ul>
+                        <li>
+                            <Link to="/calculator">계산기</Link>
+                        </li>
+                        <li>
+                            <Link to="/calendar" >달력</Link>
+
+                        </li>
+                        <li>
+                            <Link to="/calander" />
+                            하나
+                        </li>
+                        <li>
+                            <Link to="/calander" />
+                            둘
+                        </li>
+                        <li>
+                            <Link to="/calander" />
+                            셋
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
