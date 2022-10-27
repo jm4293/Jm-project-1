@@ -4,14 +4,14 @@ import Home from "./page/Home";
 import NotFound from './page/NotFound';
 import Calculator from './page/Calculator'
 import Calendar from "./page/Calendar";
-import Login from "./component/Login";
+// import Login from "./component/Login";
 
 function App() {
     return (
         <div className="root">
-            <div className='login'>
+            {/* <div className='login'>
                 <Login/>
-            </div>
+            </div> */}
             <div className="header">
                 <BrowserRouter>
                     <Header/>

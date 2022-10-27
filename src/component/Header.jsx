@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header() {
     return (
@@ -8,7 +8,7 @@ function Header() {
                 <div className='header-menu-list'>
                     <Link to='/'>
                         <img
-                            style={{ width: "90px", height:"70px", margin:"20px 5px"}}
+                            style={{ width: "90px", height: "70px", margin: "20px 5px" }}
                             src='/images/logo.png'
                             alt='로고'
                         />
@@ -19,19 +19,15 @@ function Header() {
                         </li>
                         <li>
                             <Link to="/calendar" >달력</Link>
-
                         </li>
                         <li>
-                            <Link to="/calander" />
-                            하나
+                            <Link to="one">하나</Link>
                         </li>
                         <li>
-                            <Link to="/calander" />
-                            둘
+                            <Link to="/two">둘</Link>
                         </li>
                         <li>
-                            <Link to="/calander" />
-                            셋
+                            <Link to="/three">셋</Link>
                         </li>
                     </ul>
                 </div>
