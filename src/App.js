@@ -1,17 +1,13 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Header from './component/Header';
-import Home from "./page/Home";
-import NotFound from './page/NotFound';
-import Calculator from './page/Calculator'
-import Calendar from "./page/Calendar";
-// import Login from "./component/Login";
+import Header from './component/component_Header';
+import Home from "./page/page_Home";
+import NotFound from './page/page_NotFound';
+import Calculator from './page/page_Calculator'
+import Calendar from "./page/page_Calendar";
 
 function App() {
     return (
         <div className="root">
-            {/* <div className='login'>
-                <Login/>
-            </div> */}
             <div className="header">
                 <BrowserRouter>
                     <Header/>
@@ -27,4 +23,4 @@ function App() {
     );
 }
 
-export default App;
+export default App; 
