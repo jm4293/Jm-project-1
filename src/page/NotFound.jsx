@@ -8,7 +8,7 @@ const NotFoundiv = styled.div`
 
 function NotFound() {
     return (
-        <NotFoundiv>없는 페이지</NotFoundiv>
+        <NotFoundiv>없는 페이지1111</NotFoundiv>
     )
 }
 
