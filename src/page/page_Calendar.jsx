@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Calculator from "../component/component_Calculator";
 
 const CalendarDiv = styled.div`
     width: 800px;
@@ -9,7 +10,7 @@ const CalendarDiv = styled.div`
 function Calendar() {
     return (
         <CalendarDiv>
-            달력
+            <Calculator/>
         </CalendarDiv>
     )
 }
