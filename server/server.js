@@ -11,7 +11,6 @@ let connection = mysql.createConnection({
     password: '123456789',
     database: 'express_db'
 })
-
 connection.connect();
 
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -32,7 +31,6 @@ app.post('/userInfoUpdate', (req, res) => {
         password: password
     };
     res.send(sendText);  // #01 client에서 입력한 email, password을 server에서 받고 다시 client로 보내기
-
 
     connection.query('INSERT INTO user_info (user_email, user_password) VALUES(?, ?)', [email, password], (err, rows, fields) => {
         if (err) {
@@ -60,5 +58,3 @@ app.post('/userInfoRead', (req, res) => {
 app.listen(PORT, () => {
     console.log(`server on ${PORT}`);
 })
-
-// 테스트

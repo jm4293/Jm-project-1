@@ -4,7 +4,35 @@ import styled from "styled-components";
 import Login from "../component/component_Login";
 import Weather from '../component/component_Weather';
 
-function Home() {
+const HomeDiv = styled.div`
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+`;
+
+const WeatherDiv = styled.div`
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid blue;
+
+`;
+
+const LoginDiv = styled.div`
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY( -20% );
+    // border: 1px solid green;
+`;
+
+function home() {
     return (
         <HomeDiv>
             <WeatherDiv>
@@ -17,30 +45,4 @@ function Home() {
     )
 }
 
-export default Home;
-
-const HomeDiv = styled.div`
-    width: 800px;
-    height: 800px;
-    display: flex;
-    flex-wrap: wrap;
-`
-
-const WeatherDiv = styled.div`
-    // border: 1px solid red;
-    width: 100%;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-const LoginDiv = styled.div`
-    // border: 1px solid blue;
-    width: 100%;
-    height: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translateY( -60% );
-`
+export default home;

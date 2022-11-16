@@ -1,17 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import Calendar from "../component/component_Calendar";
 
 const CalendarDiv = styled.div`
     width: 800px;
     height: 800px;
 `
 
-function Calendar() {
+function calendar() {
     return (
         <CalendarDiv>
-            달력
+            <Calendar/>
         </CalendarDiv>
     )
 }
 
-export default Calendar;
+export default calendar;

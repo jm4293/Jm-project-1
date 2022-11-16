@@ -2,6 +2,36 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import axios from "axios";
 
+const AppWrap = styled.div`
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 2px black solid;
+    border-radius: 16px;
+  }
+`;
+
+const ResultWrap = styled.div`
+  width: 100%;
+  border: 1px black solid;
+  padding: 10px;
+  border-radius: 8px;
+
+  .city {
+    font-size: 24px;
+  }
+  
+  .temperature {
+    font-size: 60px;
+    margin-top: 8px;
+  }
+  
+  .sky {
+    font-size: 20px;
+    margin-top: 8px;
+  }
+`;
+
 function Weather() {
     const [location, setLocation] = useState('');
     const [result, setResult] = useState({});
@@ -47,33 +77,3 @@ function Weather() {
 }
 
 export default Weather;
-
-const AppWrap = styled.div`
-  input {
-    width: 100%;
-    padding: 10px;
-    border: 2px black solid;
-    border-radius: 16px;
-  }
-`;
-
-const ResultWrap = styled.div`
-  width: 100%;
-  border: 1px black solid;
-  padding: 10px;
-  border-radius: 8px;
-
-  .city {
-    font-size: 24px;
-  }
-  
-  .temperature {
-    font-size: 60px;
-    margin-top: 8px;
-  }
-  
-  .sky {
-    font-size: 20px;
-    margin-top: 8px;
-  }
-`;

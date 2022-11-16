@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const NumButton = styled.button`
@@ -19,7 +19,7 @@ const CalButton = styled.button`
 
 function Calculator() {
     const [numbers, setNumbers] = useState('');
-    const [temp, setTemp]  =useState('');
+    const [temp, setTemp] = useState('');
 
     // 입력
     function inputNumber(e) {
@@ -65,28 +65,17 @@ function Calculator() {
     }
 
     return (
-        <div>
-            <div style={{
-                width   : 'auto',
-                height  : 'auto',
-                position: 'absolute',
-                left    : '50%',
-                top     : '30%',
-                border  : '1px solid black'
-            }}>
+        <>
+            <div style={{ width: 'auto', height: 'auto', position: 'absolute', left: '45%', top: '30%', border: '1px solid black' }}>
                 {/* 화면 */}
-                <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
-                    <div style={{
-                        width         : "150px",
-                        height        : "22px",
-                        border        : '1px solid black',
-                        display       : 'flex',
-                        justifyContent: 'center'
-                    }}>{numbers}</div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                    <div style={{ width: "150px", height: "22px", border: '1px solid black', display: 'flex', justifyContent: 'center' }}>
+                        {numbers}
+                    </div>
                 </div>
 
                 {/* 버튼 */}
-                <div style={{display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', margin: '25px 5px'}}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', margin: '25px 5px' }}>
                     <NumButton onClick=''>()</NumButton>
                     <NumButton onClick={inputCalculate}>%</NumButton>
                     <NumButton onClick={() => setNumbers('')}>C</NumButton>
@@ -109,7 +98,7 @@ function Calculator() {
                     <CalButton onClick={() => inputCalculate('=')}>=</CalButton>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
