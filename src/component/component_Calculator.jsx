@@ -67,14 +67,15 @@ function Calculator() {
         setPrevNumber(displayNumber);
     }, [displayNumber])
 
-    useEffect(() => {
-        // calculator === '' ? setPrevNumber('0') : setPrevNumber()
-        setPrevNumber('0');
-    }, [nextNumber])
+    // useEffect(() => {
+    //     // calculator === '' ? setPrevNumber('0') : setPrevNumber()
+    //     setPrevNumber('0');
+    // }, [nextNumber])
 
     // 숫자 입력
     const inputNumber = (e) => {
         // prevNumber === '0' ? setPrevNumber(e.target.value.toString()) : setPrevNumber((prev) => prev + e.target.value)
+        // prevNumber === '0' ? setPrevNumber(e.target.value.toString()) : setPrevNumber(e.target.value)
 
         displayNumber === '0' ? setDisplayNumber(e.target.value.toString()) : setDisplayNumber((prev) => prev + e.target.value);
     }
@@ -88,9 +89,14 @@ function Calculator() {
     const inputCalculate = (e) => {
         setDisplayNumber((prev) => prev + e.target.value);
 
-        // calculator === '' ? setNextNumber(prevNumber) : result();
+        calculator !== '' ? setPrevNumber(0) : setNextNumber(prevNumber);
 
-        setNextNumber(prevNumber);
+        // if(calculator === ''){
+        //     setNextNumber(prevNumber);
+        // }
+
+        setPrevNumber('0');
+        // setNextNumber(prevNumber);
         setCalculator(e.target.value);
     }
 
@@ -133,7 +139,7 @@ function Calculator() {
             <div>
                 <DisplayDiv>
                     <DisplayNumberDiv>{displayNumber}</DisplayNumberDiv>
-                    <div>입력값: {nextNumber}</div>
+                    {/* <div>입력값: {nextNumber}</div> */}
                 </DisplayDiv>
                 <NumberDiv>
                     <NumberButton onClick={clear} value={''}>()</NumberButton>
@@ -167,3 +173,6 @@ function Calculator() {
 }
 
 export default Calculator;
+
+
+// calculator 브랜치에서 수정
