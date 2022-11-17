@@ -57,27 +57,54 @@ function Calculator() {
     const [prevNumber, setPrevNumber] = useState('0');
     const [nextNumber, setNextNumber] = useState('0');
     const [displayNumber, setDisplayNumber] = useState('0');
+    const [resultNumber, setResultNumber] = useState(0);
+
     const [calculator, setCalculator] = useState('');
 
-    // useEffect(() => {
-    //     setDisplayNumber(prevNumber);
-    // }, [prevNumber])
+    useEffect(() => {
+        setPrevNumber('0');
+    }, [nextNumber])
 
     useEffect(() => {
-        setPrevNumber(displayNumber);
-    }, [displayNumber])
-
-    // useEffect(() => {
-    //     // calculator === '' ? setPrevNumber('0') : setPrevNumber()
-    //     setPrevNumber('0');
-    // }, [nextNumber])
+        setNextNumber(resultNumber.toString());
+        setDisplayNumber(resultNumber.toString());
+    }, [resultNumber])
 
     // 숫자 입력
     const inputNumber = (e) => {
-        // prevNumber === '0' ? setPrevNumber(e.target.value.toString()) : setPrevNumber((prev) => prev + e.target.value)
-        // prevNumber === '0' ? setPrevNumber(e.target.value.toString()) : setPrevNumber(e.target.value)
-
         displayNumber === '0' ? setDisplayNumber(e.target.value.toString()) : setDisplayNumber((prev) => prev + e.target.value);
+        prevNumber === '0' ? setPrevNumber(e.target.value.toString()) : setPrevNumber((prev) => prev + e.target.value);
+    }
+
+    // + - * / 입력
+    const inputCalculate = (e) => {
+        setDisplayNumber((prev) => prev + e.target.value);
+
+        if(calculator === ''){
+            setNextNumber(prevNumber);
+        }
+
+        setCalculator(e.target.value);
+    }
+
+    // 계산
+    const result = (e) => {
+        switch (calculator) {
+            case '+':
+                setResultNumber(parseInt(nextNumber) + parseInt(prevNumber));
+                break;
+            case '-':
+                setResultNumber(parseInt(nextNumber) - parseInt(prevNumber));
+                break
+            case '*':
+                setResultNumber(parseInt(nextNumber) * parseInt(prevNumber));
+                break
+            case '/':
+                setResultNumber(parseInt(nextNumber) / parseInt(prevNumber));
+                break
+            case '%':
+                break
+        }
     }
 
     // 소수점 입력
@@ -85,53 +112,12 @@ function Calculator() {
 
     }
 
-    // + - * / 입력
-    const inputCalculate = (e) => {
-        setDisplayNumber((prev) => prev + e.target.value);
-
-        calculator !== '' ? setPrevNumber(0) : setNextNumber(prevNumber);
-
-        // if(calculator === ''){
-        //     setNextNumber(prevNumber);
-        // }
-
-        setPrevNumber('0');
-        // setNextNumber(prevNumber);
-        setCalculator(e.target.value);
-    }
-
-    // 계산
-    const result = (e) => {
-        let resultNumber = 0;
-        switch (calculator) {
-            case '+':
-                resultNumber = parseInt(prevNumber) + parseInt(nextNumber);
-                // console.log(resultNumber)
-                // setDisplayNumber(parseInt(prevNumber) + parseInt(nextNumber));
-                break;
-            case '-':
-                // setDisplayNumber(parseInt(prevNumber) - parseInt(nextNumber));
-                break
-            case '*':
-                // setDisplayNumber(parseInt(prevNumber) * parseInt(nextNumber));
-                break
-            case '/':
-                // setDisplayNumber(parseInt(prevNumber) / parseInt(nextNumber));
-                break
-            case '%':
-                // setDisplayNumber(parseInt(prevNumber) % parseInt(nextNumber));
-                break
-        }
-
-        setDisplayNumber(resultNumber.toString());
-        setNextNumber(resultNumber.toString());
-        // setCalculator(e.target.value);
-        // setPrevNumber('0');
-        // setNextNumber(displayNumber);
-    }
-
     const clear = () => {
-        return setPrevNumber('0');
+        setPrevNumber('0');
+        setNextNumber('0');
+        setDisplayNumber('0');
+        setResultNumber(0);
+        setCalculator('');
     }
 
     return (
@@ -165,6 +151,7 @@ function Calculator() {
                 </NumberDiv>
                 <div>prevNumber: {prevNumber}</div>
                 <div>nextNumber: {nextNumber}</div>
+                <div>resultNumber: {resultNumber}</div>
                 <div>displayNumber: {displayNumber}</div>
                 <div>calculator: {calculator}</div>
             </div>
