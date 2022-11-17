@@ -1,16 +1,41 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 
 const FrameDiv = styled.div`
-    width: 600px;
-    height: 600px;
+    width: 700px;
+    height: 700px;
     position: absolute;
-    left: 23%;
-    top: 10%;
+    left: 15%;
+    top: 5%;
     border: 1px solid black;
 `;
 
-const NumButton = styled.button`
+const DisplayDiv = styled.div`
+    width: 80%;
+    height: 80px;
+    position: absolute;
+    left: 10%;
+    top: 3%
+    // border: 1px solid black;
+`;
+
+const DisplayNumberDiv = styled.div`
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+`;
+
+const NumberDiv = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 150px 5px;
+`;
+
+const NumberButton = styled.button`
     background-color: #f2f3f5;
     border: none;
     font-size: 18px; 
@@ -19,7 +44,7 @@ const NumButton = styled.button`
     padding: 10px
 `;
 
-const CalButton = styled.button`
+const CalculationButton = styled.button`
     background-color: #4b89dc;
     border: none;
     font-size: 18px; 
@@ -29,88 +54,115 @@ const CalButton = styled.button`
 `;
 
 function Calculator() {
-    const [numbers, setNumbers] = useState('');
-    const [temp, setTemp] = useState('');
+    const [prevNumber, setPrevNumber] = useState('0');
+    const [nextNumber, setNextNumber] = useState('0');
+    const [displayNumber, setDisplayNumber] = useState('0');
+    const [calculator, setCalculator] = useState('');
 
-    // 입력
-    function inputNumber(e) {
-        setNumbers((prev) => prev + e)
-        setTemp(numbers);
-    }
+    // useEffect(() => {
+    //     setDisplayNumber(prevNumber);
+    // }, [prevNumber])
 
-    // 첫 입력 0 검사
-    function inputZeroCheck(e) {
+    useEffect(() => {
+        setPrevNumber(displayNumber);
+    }, [displayNumber])
 
+    useEffect(() => {
+        // calculator === '' ? setPrevNumber('0') : setPrevNumber()
+        setPrevNumber('0');
+    }, [nextNumber])
+
+    // 숫자 입력
+    const inputNumber = (e) => {
+        // prevNumber === '0' ? setPrevNumber(e.target.value.toString()) : setPrevNumber((prev) => prev + e.target.value)
+
+        displayNumber === '0' ? setDisplayNumber(e.target.value.toString()) : setDisplayNumber((prev) => prev + e.target.value);
     }
 
     // 소수점 입력
-    function inputPointCheck(e) {
+    const inputPoint = (e) => {
 
     }
 
-    // + - * / 계산
-    function inputCalculate(e) {
-        switch (e) {
+    // + - * / 입력
+    const inputCalculate = (e) => {
+        setDisplayNumber((prev) => prev + e.target.value);
+
+        // calculator === '' ? setNextNumber(prevNumber) : result();
+
+        setNextNumber(prevNumber);
+        setCalculator(e.target.value);
+    }
+
+    // 계산
+    const result = (e) => {
+        let resultNumber = 0;
+        switch (calculator) {
             case '+':
-                setNumbers((prev) => prev + '+')
+                resultNumber = parseInt(prevNumber) + parseInt(nextNumber);
+                // console.log(resultNumber)
+                // setDisplayNumber(parseInt(prevNumber) + parseInt(nextNumber));
                 break;
             case '-':
-                setNumbers((prev) => prev + '-')
+                // setDisplayNumber(parseInt(prevNumber) - parseInt(nextNumber));
                 break
             case '*':
-                setNumbers((prev) => prev + '*')
+                // setDisplayNumber(parseInt(prevNumber) * parseInt(nextNumber));
                 break
             case '/':
-                setNumbers((prev) => prev + '/')
+                // setDisplayNumber(parseInt(prevNumber) / parseInt(nextNumber));
                 break
             case '%':
-                setNumbers((prev) => prev + '%')
-                break
-            case '+/-':
-                setNumbers((prev) => prev + '*(-1)')
-                break
-            case '=':
-                setNumbers(window.eval(numbers))
+                // setDisplayNumber(parseInt(prevNumber) % parseInt(nextNumber));
                 break
         }
+
+        setDisplayNumber(resultNumber.toString());
+        setNextNumber(resultNumber.toString());
+        // setCalculator(e.target.value);
+        // setPrevNumber('0');
+        // setNextNumber(displayNumber);
+    }
+
+    const clear = () => {
+        return setPrevNumber('0');
     }
 
     return (
-        <>
-            <FrameDiv>
-
-                {/*화면*/}
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
-                    <div style={{ width: "90%", height: "80px", border: '1px solid black', display: 'flex', justifyContent: 'center', alignItems: "center", fontSize: '25px' }}>
-                        {numbers}
-                    </div>
-                </div>
-
-                {/* 버튼 */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', margin: '150px 5px' }}>
-                    <NumButton onClick=''>()</NumButton>
-                    <NumButton onClick={inputCalculate}>%</NumButton>
-                    <NumButton onClick={() => setNumbers('')}>C</NumButton>
-                    <CalButton onClick={() => inputCalculate('/')}>/</CalButton>
-                    <NumButton onClick={() => inputNumber(7)}>7</NumButton>
-                    <NumButton onClick={() => inputNumber(8)}>8</NumButton>
-                    <NumButton onClick={() => inputNumber(9)}>9</NumButton>
-                    <CalButton onClick={() => inputCalculate('*')}>*</CalButton>
-                    <NumButton onClick={() => inputNumber(4)}>4</NumButton>
-                    <NumButton onClick={() => inputNumber(5)}>5</NumButton>
-                    <NumButton onClick={() => inputNumber(6)}>6</NumButton>
-                    <CalButton onClick={() => inputCalculate('-')}>-</CalButton>
-                    <NumButton onClick={() => inputNumber(1)}>1</NumButton>
-                    <NumButton onClick={() => inputNumber(2)}>2</NumButton>
-                    <NumButton onClick={() => inputNumber(3)}>3</NumButton>
-                    <CalButton onClick={() => inputCalculate('+')}>+</CalButton>
-                    <NumButton onClick={() => inputCalculate('+/-')}>+/-</NumButton>
-                    <NumButton onClick={() => inputNumber(0)}>0</NumButton>
-                    <NumButton onClick={inputPointCheck}>.</NumButton>
-                    <CalButton onClick={() => inputCalculate('=')}>=</CalButton>
-                </div>
-            </FrameDiv>
-        </>
+        <FrameDiv>
+            <div>
+                <DisplayDiv>
+                    <DisplayNumberDiv>{displayNumber}</DisplayNumberDiv>
+                    <div>입력값: {nextNumber}</div>
+                </DisplayDiv>
+                <NumberDiv>
+                    <NumberButton onClick={clear} value={''}>()</NumberButton>
+                    <NumberButton onClick={inputCalculate} value={'%'}>%</NumberButton>
+                    <NumberButton onClick={clear}>C</NumberButton>
+                    <CalculationButton onClick={inputCalculate} value={'/'}>/</CalculationButton>
+                    <NumberButton onClick={inputNumber} value={7}>7</NumberButton>
+                    <NumberButton onClick={inputNumber} value={8}>8</NumberButton>
+                    <NumberButton onClick={inputNumber} value={9}>9</NumberButton>
+                    <CalculationButton onClick={inputCalculate} value={'*'}>*</CalculationButton>
+                    <NumberButton onClick={inputNumber} value={4}>4</NumberButton>
+                    <NumberButton onClick={inputNumber} value={5}>5</NumberButton>
+                    <NumberButton onClick={inputNumber} value={6}>6</NumberButton>
+                    <CalculationButton onClick={inputCalculate} value={'-'}>-</CalculationButton>
+                    <NumberButton onClick={inputNumber} value={1}>1</NumberButton>
+                    <NumberButton onClick={inputNumber} value={2}>2</NumberButton>
+                    <NumberButton onClick={inputNumber} value={3}>3</NumberButton>
+                    <CalculationButton onClick={inputCalculate} value={'+'}>+</CalculationButton>
+                    <NumberButton onClick={clear} value={''}>+/-</NumberButton>
+                    <NumberButton onClick={inputNumber} value={0}>0</NumberButton>
+                    <NumberButton onClick={clear} value={''}>.</NumberButton>
+                    <CalculationButton onClick={result} value={'='}>=</CalculationButton>
+                </NumberDiv>
+                <div>prevNumber: {prevNumber}</div>
+                <div>nextNumber: {nextNumber}</div>
+                <div>displayNumber: {displayNumber}</div>
+                <div>calculator: {calculator}</div>
+            </div>
+        </FrameDiv>
     )
 }
 
