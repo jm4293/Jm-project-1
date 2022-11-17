@@ -14,21 +14,12 @@ const FrameDiv = styled.div`
 const HeaderDiv = styled.div`
     width: 700px;
     height: 50px;
-    // display: flex;
-    // border-top: 1px solid black;
-    // border-left: 1px solid black;
-    // border-right: 1px solid black;
-    // border: 1px solid red;
-    // border-bottom: none;
 `;
 
 const MonthDiv = styled.div`
     width: 700px;
     height: 50px;
     display: flex;
-    // justify-content: center;
-    // border 1px solid blue;
-    // width: 10%;
 `;
 
 const MonthListDiv = styled.div`
@@ -41,12 +32,10 @@ const MonthListDiv = styled.div`
 `;
 
 const DayDiv = styled.div`
-    // border: 1px solid green;
     width: 100%;
     height: 600px;
     display: flex;
     flex-wrap: wrap;
-    // justify-content: center;
 `;
 
 const DayListDiv = styled.div`
