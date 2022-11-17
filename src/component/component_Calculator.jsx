@@ -160,6 +160,3 @@ function Calculator() {
 }
 
 export default Calculator;
-
-
-// calculator 브랜치에서 수정
