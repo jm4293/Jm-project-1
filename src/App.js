@@ -41,10 +41,4 @@ function App() {
     );
 }
 
-export default App; 
-
-// test11111
-// test22222
-
-// branch test01
-// branch test00000000
+export default App;

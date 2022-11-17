@@ -1,21 +1,32 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+const FrameDiv = styled.div`
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    left: 23%;
+    top: 10%;
+    border: 1px solid black;
+`;
+
 const NumButton = styled.button`
     background-color: #f2f3f5;
     border: none;
-    font-size: 18px;
+    font-size: 18px; 
     border-radius: 35px;
-    margin: 3px 3px;
-`
+    margin: 3px;
+    padding: 10px
+`;
 
 const CalButton = styled.button`
     background-color: #4b89dc;
     border: none;
     font-size: 18px; 
     border-radius: 35px;
-    margin: 3px 3px;
-`
+    margin: 3px;
+    padding: 10px
+`;
 
 function Calculator() {
     const [numbers, setNumbers] = useState('');
@@ -66,16 +77,17 @@ function Calculator() {
 
     return (
         <>
-            <div style={{ width: 'auto', height: 'auto', position: 'absolute', left: '45%', top: '30%', border: '1px solid black' }}>
-                {/* 화면 */}
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                    <div style={{ width: "150px", height: "22px", border: '1px solid black', display: 'flex', justifyContent: 'center' }}>
+            <FrameDiv>
+
+                {/*화면*/}
+                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
+                    <div style={{ width: "90%", height: "80px", border: '1px solid black', display: 'flex', justifyContent: 'center', alignItems: "center", fontSize: '25px' }}>
                         {numbers}
                     </div>
                 </div>
 
                 {/* 버튼 */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', margin: '25px 5px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', margin: '150px 5px' }}>
                     <NumButton onClick=''>()</NumButton>
                     <NumButton onClick={inputCalculate}>%</NumButton>
                     <NumButton onClick={() => setNumbers('')}>C</NumButton>
@@ -97,7 +109,7 @@ function Calculator() {
                     <NumButton onClick={inputPointCheck}>.</NumButton>
                     <CalButton onClick={() => inputCalculate('=')}>=</CalButton>
                 </div>
-            </div>
+            </FrameDiv>
         </>
     )
 }

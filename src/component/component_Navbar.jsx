@@ -3,7 +3,8 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 
 const NavbarDiv = styled.div`
-    border-right: 1px solid black;
+    // border-right: 1px solid black;
+    border: 1px solid black;
 `;
 
 const Ul = styled.ul`

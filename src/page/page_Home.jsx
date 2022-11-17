@@ -9,7 +9,7 @@ const HomeDiv = styled.div`
     height: 800px;
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid red;
+    // border: 1px solid red;
 `;
 
 const WeatherDiv = styled.div`
@@ -28,8 +28,8 @@ const LoginDiv = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translateY( -20% );
-    // border: 1px solid green;
+    // transform: translateY( -20% );
+    border: 1px solid red;
 `;
 
 function home() {
