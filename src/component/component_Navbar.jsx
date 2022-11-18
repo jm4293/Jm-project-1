@@ -3,8 +3,10 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 
 const NavbarDiv = styled.div`
-    // border-right: 1px solid black;
-    border: 1px solid black;
+    border-right: 1px solid black;
+    // border: 1px solid black;
+    width: 100px;
+    height: 100%;
 `;
 
 const Ul = styled.ul`
@@ -36,7 +38,7 @@ function Navbar() {
                     <Link to="/calendar">달력</Link>
                 </Li>
                 <Li>
-                    <Link to="/one">하나</Link>
+                    <Link to="/chatting">채팅</Link>
                 </Li>
                 <Li>
                     <Link to="/two">둘</Link>

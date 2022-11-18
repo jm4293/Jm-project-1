@@ -2,26 +2,21 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 
 const FrameDiv = styled.div`
-    width: 700px;
-    height: 700px;
-    position: absolute;
-    left: 15%;
-    top: 5%;
-    border: 1px solid black;
+    width: 100%;
+    height: 100%;
 `;
 
 const DisplayDiv = styled.div`
     width: 80%;
-    height: 80px;
+    height: 100px;
     position: absolute;
-    left: 10%;
+    left: 15%;
     top: 3%
-    // border: 1px solid black;
-`;
+`
 
 const DisplayNumberDiv = styled.div`
     width: 100%;
-    height: 100%;
+    height: 80%;
     border: 1px solid black;
     display: flex;
     justify-content: center;

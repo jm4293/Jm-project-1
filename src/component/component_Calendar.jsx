@@ -1,30 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
-import { format, addMonths, subMonths, getMonth } from "date-fns";
+import {format, addMonths, subMonths, getMonth} from "date-fns";
 
 const FrameDiv = styled.div`
-    max-width: 700px;
-    height: 700px;
-    border: 1px solid black;
-    position: absolute;
-    left: 15%;
-    top: 5%
+    width: 100%;
+    height: 100%;
 `;
 
 const HeaderDiv = styled.div`
-    width: 700px;
-    height: 50px;
+    width: 100%;
+    height: 75px;
 `;
 
 const MonthDiv = styled.div`
-    width: 700px;
-    height: 50px;
+    width: 100%;
+    height: 125px;
     display: flex;
 `;
 
 const MonthListDiv = styled.div`
     border: 1px solid black;
-    width: 100px;
+    width: calc(100%/7);
     height: 100%;    
     display: flex;
     justify-content: center;
@@ -33,14 +29,14 @@ const MonthListDiv = styled.div`
 
 const DayDiv = styled.div`
     width: 100%;
-    height: 600px;
+    height: 800px;
     display: flex;
     flex-wrap: wrap;
 `;
 
 const DayListDiv = styled.div`
-    border: 1px solid black;
-    width: 98px;
+    // background-color: snow;
+    width: calc(100%/7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +44,6 @@ const DayListDiv = styled.div`
 
 function Calendar() {
     const monthColumn = ['일', '월', '화', '수', '목', '금', '토'];
-
     const [current, setCurrent] = useState(new Date())
 
     function prevButton() {
@@ -59,15 +54,15 @@ function Calendar() {
         setCurrent(addMonths(current, 1));
     }
 
-    const HeadrCell = () => {
-        return <div style={{ display: 'flex' }}>
-            <div style={{width: '40%', height: '100%'}}>
-                <div className="TodayMonth" style={{ width: '100%', height: '100%' }}>
+    const HeaderCell = () => {
+        return <div style={{display: 'flex'}}>
+            <div style={{width: '40%'}}>
+                <div className="TodayMonth">
                     {format(current, 'yy년 MM월 dd일')}
                 </div>
             </div>
             <div style={{width: '60%'}}>
-                <div className="Button" style={{ width: '100%', heighte: '100%', display: 'flex', justifyContent: 'right' }}>
+                <div className="Button" style={{display: 'flex', justifyContent: 'right'}}>
                     <div className="PrevButton">
                         <button onClick={prevButton}>prev</button>
                     </div>
@@ -110,13 +105,13 @@ function Calendar() {
         <FrameDiv>
             <div>
                 <HeaderDiv>
-                    <HeadrCell />
+                    <HeaderCell/>
                 </HeaderDiv>
                 <MonthDiv>
-                    <MonthCell />
+                    <MonthCell/>
                 </MonthDiv>
                 <DayDiv>
-                    <DayCell />
+                    <DayCell/>
                 </DayDiv>
             </div>
         </FrameDiv>
