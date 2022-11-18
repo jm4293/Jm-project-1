@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
+const PORT = 3001;
+
 const cors = require('cors');
 const bodyparser = require('body-parser');
 const mysql = require('mysql');
-const PORT = 3001;
+
+let http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
 let connection = mysql.createConnection({
     host: '127.0.0.1',
@@ -34,10 +38,12 @@ app.post('/userInfoUpdate', (req, res) => {
 
     connection.query('INSERT INTO user_info (user_email, user_password) VALUES(?, ?)', [email, password], (err, rows, fields) => {
         if (err) {
-            console.log("mysql update fail~~");
+            console.log("mysql update fail");
+            console.log(err);
         }
         else {
-            console.log("mysql update success~")
+            console.log("mysql update success")
+            console.log(row);
         }
     })
 })
@@ -46,15 +52,32 @@ app.post('/userInfoUpdate', (req, res) => {
 app.post('/userInfoRead', (req, res) => {
     connection.query('SELECT * FROM user_info', (err, rows, fields) => {
         if (err) {
-            console.log("mysql read fail~~");
+            console.log("mysql read fail");
+            console.log(err);
         }
         else {
-            console.log("mysql read success~~");
+            console.log("mysql read success");
             res.send(rows);  // #02
         }
     })
 })
 
+// Chatting
+io.on("connection", (socket) => {
+    socket.on("send message", (item) => {
+        const message = "id: " + item.name + "// message: " + item.msg;
+        console.log(message);
+        io.emit("receive message", {name: item.name, msg: item.msg});
+    });
+    socket.on("disconnect", () => {
+        console.log("user disconnected: ", socket.id)
+    });
+});
+
+http.listen(3002, () => {
+    console.log("chatting app server on port: 3002");
+})
+
 app.listen(PORT, () => {
-    console.log(`server on ${PORT}`);
+    console.log(`server on port: ${PORT}`);
 })
