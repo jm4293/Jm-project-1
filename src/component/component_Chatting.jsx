@@ -72,7 +72,7 @@ function Chatting() {
             <MessageDiv>
                 <div>
                     <ReceiveMessageDiv>
-                        123
+
                     </ReceiveMessageDiv>
                 </div>
                 <div>
