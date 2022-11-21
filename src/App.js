@@ -4,6 +4,7 @@ import Home from "./page/page_Home";
 import Calculator from "./page/page_Calculator";
 import Calendar from "./page/page_Calendar";
 import Chatting from "./page/page_Chatting";
+import Weather from "./page/page_Weather"
 import NotFound from './page/page_NotFound';
 
 import styled from "styled-components";
@@ -34,6 +35,7 @@ function App() {
                         <Route path='/calculator' element={<Calculator/>}/>
                         <Route path='/calendar' element={<Calendar/>}/>
                         <Route path='/chatting' element={<Chatting/>}/>
+                        <Route path='/weather' element={<Weather/>}></Route>
                         <Route path='/*' element={<NotFound/>}/>
                     </Routes>
                 </BrowserRouter>

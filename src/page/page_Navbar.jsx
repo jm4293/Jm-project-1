@@ -7,6 +7,7 @@ const NavbarDiv = styled.div`
     // border: 1px solid black;
     width: 100px;
     height: 100%;
+    
 `;
 
 const Ul = styled.ul`
@@ -41,7 +42,7 @@ function Navbar() {
                     <Link to="/chatting">채팅</Link>
                 </Li>
                 <Li>
-                    <Link to="/two">둘</Link>
+                    <Link to="/weather">날씨</Link>
                 </Li>
                 <Li>
                     <Link to="/three">셋</Link>

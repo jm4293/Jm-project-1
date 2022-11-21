@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Login from "../component/component_Home_Login";
 import Weather from '../component/component_Home_Weather';
 
 const HomeDiv = styled.div`
@@ -9,22 +8,23 @@ const HomeDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
 `
-const LoginDiv = styled.div`
+
+const WeatherDiv = styled.div`
     width: 100%;
-    height: 70%;
+    height: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
-function home() {
+function weather() {
     return (
         <HomeDiv>
-            <LoginDiv>
-                <Login />
-            </LoginDiv>
+            <WeatherDiv>
+                <Weather />
+            </WeatherDiv>
         </HomeDiv>
     )
 }
 
-export default home;
+export default weather;

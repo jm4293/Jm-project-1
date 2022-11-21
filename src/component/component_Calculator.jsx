@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const FrameDiv = styled.div`
@@ -24,7 +24,7 @@ const DisplayNumberDiv = styled.div`
     font-size: 25px;
 `;
 
-const NumberDiv = styled.div`
+const ButtonDiv = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin: 150px 5px;
@@ -53,7 +53,6 @@ function Calculator() {
     const [nextNumber, setNextNumber] = useState('0');
     const [displayNumber, setDisplayNumber] = useState('0');
     const [resultNumber, setResultNumber] = useState(0);
-
     const [calculator, setCalculator] = useState('');
 
     useEffect(() => {
@@ -75,7 +74,7 @@ function Calculator() {
     const inputCalculate = (e) => {
         setDisplayNumber((prev) => prev + e.target.value);
 
-        if(calculator === ''){
+        if (calculator === '') {
             setNextNumber(prevNumber);
         }
 
@@ -107,6 +106,7 @@ function Calculator() {
 
     }
 
+    // 초기화
     const clear = () => {
         setPrevNumber('0');
         setNextNumber('0');
@@ -120,9 +120,8 @@ function Calculator() {
             <div>
                 <DisplayDiv>
                     <DisplayNumberDiv>{displayNumber}</DisplayNumberDiv>
-                    {/* <div>입력값: {nextNumber}</div> */}
                 </DisplayDiv>
-                <NumberDiv>
+                <ButtonDiv>
                     <NumberButton onClick={clear} value={''}>()</NumberButton>
                     <NumberButton onClick={inputCalculate} value={'%'}>%</NumberButton>
                     <NumberButton onClick={clear}>C</NumberButton>
@@ -143,7 +142,7 @@ function Calculator() {
                     <NumberButton onClick={inputNumber} value={0}>0</NumberButton>
                     <NumberButton onClick={clear} value={''}>.</NumberButton>
                     <CalculationButton onClick={result} value={'='}>=</CalculationButton>
-                </NumberDiv>
+                </ButtonDiv>
                 <div>prevNumber: {prevNumber}</div>
                 <div>nextNumber: {nextNumber}</div>
                 <div>resultNumber: {resultNumber}</div>

@@ -11,7 +11,8 @@ const socket = io.connect("http://localhost:3002")
 const Frame = styled.div`
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    // border: 1px solid black;
+    border-left: none;
     // display: flex;
     // flex-wrap: wrap;
 `;
@@ -25,19 +26,18 @@ const MessageDiv = styled.div`
 const SendMessageDiv = styled.div`
     width: 450px;
     height: 100%;
-    border: 1px solid blue;
 `;
 
 const ReceiveMessageDiv = styled.div`
     width: 450px;
     height: 100%;
-    border: 1px solid red;
+    border-right: 1px solid black;
 `;
 
 const InputMessageDiv = styled.div`
     width: 900px
     height: 100%;
-    border: 1px solid green;
+    border-top: 1px solid black;
 `;
 
 function Chatting() {
@@ -102,7 +102,7 @@ function Chatting() {
 
             <div>
                 <InputMessageDiv>
-                    <form onSubmit={sendMsg}>
+                    <form onSubmit={sendMsg} style={{display: 'flex', justifyContent: 'space-between'}}>
                         <div>
                             <input type='text' onChange={inputName} value={name} name='name' id='id' placeholder='아이디' />
                             <input type='text' onChange={inputMsg} value={msg} name='msg' id='msg' placeholder='내용' />
