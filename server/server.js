@@ -2,12 +2,14 @@ const express = require('express');
 const app = express();
 const PORT = 3001;
 
-const cors = require('cors');
+// mysql 선언
 const bodyparser = require('body-parser');
 const mysql = require('mysql');
+let cors = require('cors');
 
-let http = require('http').createServer(app);
-const io = require('socket.io')(http);
+app.use(cors());
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
 
 let connection = mysql.createConnection({
     host: '127.0.0.1',
@@ -17,13 +19,15 @@ let connection = mysql.createConnection({
 })
 connection.connect();
 
-app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
-app.use(cors());
-
-app.get('/', (req, res) => {
-    res.send(`${PORT} 실행`);
-})
+// socket.io 선언
+var http = require("http").createServer(app);
+const io = require("socket.io")(http, {
+    cors: {
+        origin: "http://localhost:3000",
+        // origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
 
 // express_db에 email, password update 하기
 app.post('/userInfoUpdate', (req, res) => {
@@ -43,7 +47,7 @@ app.post('/userInfoUpdate', (req, res) => {
         }
         else {
             console.log("mysql update success")
-            console.log(row);
+            console.log(rows);
         }
     })
 })
@@ -65,18 +69,27 @@ app.post('/userInfoRead', (req, res) => {
 // Chatting
 io.on("connection", (socket) => {
     socket.on("send message", (item) => {
-        const message = "id: " + item.name + "// message: " + item.msg;
+        const message = "id: " + item.name + " message: " + item.msg;
         console.log(message);
-        io.emit("receive message", {name: item.name, msg: item.msg});
+        io.emit("receive message", { name: item.name, msg: item.msg });
     });
+
     socket.on("disconnect", () => {
         console.log("user disconnected: ", socket.id)
     });
+
+    socket.on('error', (error) => {
+        console.log(`에러 발생: ${error}`);
+    })
 });
 
-http.listen(3002, () => {
-    console.log("chatting app server on port: 3002");
+app.get('/', (req, res) => {
+    res.send(`${PORT} 실행`);
 })
+
+http.listen(3002, () => {
+    console.log(`app listening on port : ${3002}`);
+});
 
 app.listen(PORT, () => {
     console.log(`server on port: ${PORT}`);
