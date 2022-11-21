@@ -2,18 +2,21 @@ import React from "react";
 import styled from "styled-components";
 
 const NotFoundiv = styled.div`
-    // width: 800px;
-    // height: 800px;
+    width: 100%;
+    // height: 100%;
     font-size: 50px;
-    display : flex;
-    justify-content : center;
-    align-items : center;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 function notFound() {
     return (
         <NotFoundiv>
-            없는 페이지
+            <div>
+                없는 페이지
+            </div>
         </NotFoundiv>
     )
 }
