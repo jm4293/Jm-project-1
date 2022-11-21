@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 function Login() {
     const [emailUpdate, setEmailUpdate] = useState('');
@@ -51,17 +51,19 @@ function Login() {
                 console.log(json);  // #02
 
                 json.map(content => {
-                    return console.log(content.user_email);
+                    // return console.log(content.user_email);
+                    console.log(content.user_email);
+                    console.log(content.user_password);
                 })
             })
     }
 
     return (
         <div>
-            <div className='LoginPage' style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div className='LoginPage' style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 {/*로그인 입력*/}
                 <div className='contentWrap'>
-                    <div style={{ marginTop: '6px' }} className='inputTitle'>이메일</div>
+                    <div style={{marginTop: '6px'}} className='inputTitle'>이메일</div>
                     <div className='inputWrap'>
                         <input
                             className='input'
@@ -72,7 +74,7 @@ function Login() {
                         />
                     </div>
 
-                    <div style={{ marginTop: '15px' }} className='inputTitle'>비밀번호</div>
+                    <div style={{marginTop: '15px'}} className='inputTitle'>비밀번호</div>
                     <div className='inputWrap'>
                         <input
                             className='input'
