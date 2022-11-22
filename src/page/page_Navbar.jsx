@@ -45,7 +45,10 @@ function Navbar() {
                     <Link to="/weather">날씨</Link>
                 </Li>
                 <Li>
-                    <Link to="/three">셋</Link>
+                    <Link to="/noticeboard">게시판</Link>
+                </Li>
+                <Li>
+                    <Link to="four">넷</Link>
                 </Li>
             </Ul>
         </NavbarDiv>
