@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Login from "../component/component_Home_Login";
-import Weather from '../component/component_Home_Weather';
+import Login from "../component/component_Login";
 
 const HomeDiv = styled.div`
     width: 100%;

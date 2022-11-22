@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Navbar from "./page/page_Navbar";
-import Home from "./page/page_Home";
+import Home from "./page/page_Login";
 import Calculator from "./page/page_Calculator";
 import Calendar from "./page/page_Calendar";
 import Chatting from "./page/page_Chatting";
