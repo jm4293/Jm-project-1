@@ -10,28 +10,20 @@ const Frame = styled.div`
 `;
 
 const HeaderDiv = styled.div`
-    witdth: 100%;
-    height: 15%;
+    width: 100%;
+    // height: 15%;
     // border: 1px solid red;
 `;
 
 const ContentDiv = styled.div`
-    witdth: 100%;
-    height: 85%;
+    width: 100%;
+    // height: 85%;
     // border: 1px solid blue;
-`;
-
-const TitleDiv = styled.div`
-
-`;
-
-const AmountDiv = styled.div`
-
 `;
 
 const Table = styled.table`
     width: 100%;
-    border: 1px solid blakc;
+    border: 1px solid black;
     border-collapse: collapse;
 `;
 
@@ -43,22 +35,34 @@ const Td = styled.td`
     border: 1px solid black;
 `;
 
+const TailDiv = styled.div`
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+`;
+
 function Noticeboard() {
+    const [title, setTitle] = useState('');
     const [writer, setWriter] = useState('');
-    const [title, setTtitle] = useState('');
+    const [date, setDate] = useState('');
     const [content, setContent] = useState('');
     const [amount, setAmount] = useState('0');
 
     const navigate = useNavigate();
 
-    const write_move = () => {
-        navigate('/noticeboard/write', {state: {id:'123', pw:'456'}});
+    const move_view = () => {
+        navigate('/noticeboard/view')
     }
 
-    const aaa = [
-        {id:1, pw:'a'},
-        {id:2, pw:'b'}
-    ]
+    const move_write = () => {
+        // navigate('/noticeboard/write', {state: {id:'123', pw:'456'}});
+        navigate('/noticeboard/write');
+    }
+
+    // const aaa = [
+    //     {index:1, id:1, pw:'a'},
+    //     {index:2, id:2, pw:'b'}
+    // ]
 
     return (
         <Frame>
@@ -75,18 +79,17 @@ function Noticeboard() {
                     <Table>
                         <thead>
                             <tr>
-                                <Th>index</Th>
-                                <Th>제목</Th>
-                                <Th>작성자</Th>
-                                <Th>작성일</Th>
-                                <Th>조회</Th>
+                                <Th style={{width: '10%'}}>index</Th>
+                                <Th style={{width: '60%'}}>제목</Th>
+                                <Th style={{width: '15%'}}>작성자</Th>
+                                <Th style={{width: '15%'}}>작성일</Th>
+                                {/*<Th>조회</Th>*/}
                             </tr>
                         </thead>
                         <tbody >
                             <tr>
                                 <Td>1</Td>
-                                <Td>1</Td>
-                                <Td>1</Td>
+                                <Td onClick={move_view}>1</Td>
                                 <Td>1</Td>
                                 <Td>1</Td>
                             </tr>
@@ -95,18 +98,18 @@ function Noticeboard() {
                                 <Td>2</Td>
                                 <Td>2</Td>
                                 <Td>2</Td>
-                                <Td>2</Td>
                             </tr>
-                            {aaa.map((e)=>{
-                                return (<tr><Td>{e.id}</Td><Td>{e.pw}</Td></tr>)
-                            })}
+                            {/*{aaa.map((e)=>{*/}
+                            {/*    return (<tr key={e.index}><Td>{e.id}</Td><Td>{e.pw}</Td></tr>)*/}
+                            {/*})}*/}
 
                         </tbody>
                     </Table>
-                    <button onClick={write_move}>글쓰기</button>
                 </div>
-
             </ContentDiv>
+            <TailDiv>
+                <button onClick={move_write}>글쓰기</button>
+            </TailDiv>
         </Frame>
     )
 }
