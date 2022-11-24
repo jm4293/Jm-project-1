@@ -23,17 +23,10 @@ app.get('/', (req, res) => {
     res.send(`${PORT} 실행`);
 })
 
-app.post('/register', (req, res) => {
+app.post('/board/register', (req, res) => {
     const title = req.body.title;
     const writer = req.body.writer;
     const content = req.body.content;
-
-    // const sendText = {
-    //     title: title,
-    //     writer: writer,
-    //     content: content,
-    //     date: date
-    // };
 
     connection.query('INSERT INTO noticeboard (title, writer, content) VALUES(?, ?, ?)', [title, writer, content], (err, rows, fields) => {
         if (err) {
@@ -42,6 +35,19 @@ app.post('/register', (req, res) => {
         } else {
             console.log("mysql update success")
             // console.log(rows);
+        }
+    })
+})
+
+app.post('/board', (req, res) => {
+    connection.query('SELECT * FROM noticeboard', (err, rows, fields) => {
+        if (err) {
+            console.log("mysql read fail");
+            console.log(err);
+        }
+        else {
+            console.log("mysql read success");
+            res.send(rows);
         }
     })
 })

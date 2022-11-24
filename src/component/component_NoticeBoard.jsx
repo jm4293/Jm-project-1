@@ -1,5 +1,6 @@
 import { id } from "date-fns/locale";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -42,11 +43,31 @@ const TailDiv = styled.div`
 `;
 
 function Noticeboard() {
-    const [title, setTitle] = useState('');
-    const [writer, setWriter] = useState('');
-    const [date, setDate] = useState('');
-    const [content, setContent] = useState('');
-    const [amount, setAmount] = useState('0');
+    const [board, setBoard] = useState([]);
+    // const [title, setTitle] = useState([]);
+    // const [writer, setWriter] = useState('');
+    // const [date, setDate] = useState('');
+    // const [content, setContent] = useState('');
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        fetch('http://localhost:3003/board', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify()
+        })
+            .then((res) => {
+                return res.json()
+            })
+            .then((json) => {
+                setBoard(json);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
 
     const navigate = useNavigate();
 
@@ -55,14 +76,47 @@ function Noticeboard() {
     }
 
     const move_write = () => {
-        // navigate('/noticeboard/write', {state: {id:'123', pw:'456'}});
+        // navigate('/noticeboard/write', {state: {id:'abc', pw:'123'}});
         navigate('/noticeboard/write');
     }
+
+    // const bring_row = () => {
+    //     return (
+    //         <tr>
+    //             <Td>1</Td>
+    //             <Td onClick={move_view}>1</Td>
+    //             <Td>1</Td>
+    //             <Td>1</Td>
+    //         </tr>
+    //     )
+    // }
 
     // const aaa = [
     //     {index:1, id:1, pw:'a'},
     //     {index:2, id:2, pw:'b'}
     // ]
+
+    // console.log(board)
+    // console.log(board[2])
+
+    // for(let element in board[2]){
+    //     console.log(`${element} // ${board[element]}`)
+    // }
+
+    // console.log(Object.keys(board))
+    // console.log(Object.values(board))
+
+    const test = () => {
+        return (
+            <div>
+                {
+                    board.map((item, index) => {
+                        return <div>{item.writer}</div>
+                    })
+                }
+            </div>
+        )
+    }
 
     return (
         <Frame>
@@ -71,7 +125,7 @@ function Noticeboard() {
                     <h1>전체글 보기</h1>
                 </div>
                 <div>
-                    {`${amount} 개의 글`}
+                    {`${count} 개의 글`}
                 </div>
             </HeaderDiv>
             <ContentDiv>
@@ -79,15 +133,15 @@ function Noticeboard() {
                     <Table>
                         <thead>
                             <tr>
-                                <Th style={{width: '10%'}}>index</Th>
-                                <Th style={{width: '60%'}}>제목</Th>
-                                <Th style={{width: '15%'}}>작성자</Th>
-                                <Th style={{width: '15%'}}>작성일</Th>
+                                <Th style={{ width: '10%' }}>index</Th>
+                                <Th style={{ width: '60%' }}>제목</Th>
+                                <Th style={{ width: '15%' }}>작성자</Th>
+                                <Th style={{ width: '15%' }}>작성일</Th>
                                 {/*<Th>조회</Th>*/}
                             </tr>
                         </thead>
                         <tbody >
-                            <tr>
+                            {/* <tr>
                                 <Td>1</Td>
                                 <Td onClick={move_view}>1</Td>
                                 <Td>1</Td>
@@ -98,11 +152,8 @@ function Noticeboard() {
                                 <Td>2</Td>
                                 <Td>2</Td>
                                 <Td>2</Td>
-                            </tr>
-                            {/*{aaa.map((e)=>{*/}
-                            {/*    return (<tr key={e.index}><Td>{e.id}</Td><Td>{e.pw}</Td></tr>)*/}
-                            {/*})}*/}
-
+                            </tr> */}
+                            {/* {bring_row()} */}
                         </tbody>
                     </Table>
                 </div>
@@ -110,6 +161,9 @@ function Noticeboard() {
             <TailDiv>
                 <button onClick={move_write}>글쓰기</button>
             </TailDiv>
+
+            <div>{test()}</div>
+
         </Frame>
     )
 }

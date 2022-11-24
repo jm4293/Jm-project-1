@@ -35,7 +35,7 @@ const TailDiv = styled.div`
 function Write() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const [writer, serWriter] = useState('');
+    const [writer, setWriter] = useState('');
     const navigate = useNavigate();
 
     const onChangeTitle = (e) => {
@@ -43,7 +43,7 @@ function Write() {
     }
 
     const onChangeWriter = (e) => {
-        serWriter(e.target.value);
+        setWriter(e.target.value);
     }
 
     const onChangeContent = (e) => {
@@ -51,13 +51,18 @@ function Write() {
     }
 
     const onClickRegister = () => {
+        if(title === '' || content === '' || writer === ''){
+            alert('빈칸을 입력하세요');
+            return
+        }
+
         const post = {
             title: title,
             writer: writer,
             content: content,
         }
 
-        fetch('http://localhost:3003/register', {
+        fetch('http://localhost:3003/board/register', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
@@ -71,6 +76,11 @@ function Write() {
             .catch((err) =>{
                 console.log(err);
             })
+
+        setTitle('');
+        setContent('');
+        setWriter('');
+        alert('등록완료');
     }
 
     const onClickBackPage = () => {
@@ -95,9 +105,6 @@ function Write() {
             <TailDiv>
                 <button onClick={onClickBackPage}>뒤로가기</button>
             </TailDiv>
-            <div>{title}</div>
-            <div>{writer}</div>
-            <div>{content}</div>
         </Frame>
     )
 }
