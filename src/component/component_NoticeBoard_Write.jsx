@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Frame = styled.div`
     width: 100%;
@@ -51,7 +51,7 @@ function Write() {
     }
 
     const onClickRegister = () => {
-        if(title === '' || content === '' || writer === ''){
+        if (title === '' || content === '' || writer === '') {
             alert('빈칸을 입력하세요');
             return
         }
@@ -73,7 +73,7 @@ function Write() {
             .then((json) => {
                 console.log(json);
             })
-            .catch((err) =>{
+            .catch((err) => {
                 console.log(err);
             })
 
@@ -91,16 +91,16 @@ function Write() {
         <Frame>
             <HeaderDiv>
                 <div><h1>글쓰기</h1></div>
-                <div style={{display: 'flex', alignItems: 'center'}}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
                     <button onClick={onClickRegister}>등록</button>
                 </div>
             </HeaderDiv>
             <TitleDiv>
-                <textarea onChange={onChangeTitle} value={title} placeholder='제목' style={{width: '60%'}}></textarea>
-                <textarea onChange={onChangeWriter} value={writer} placeholder='작성자' style={{width: '20%'}}></textarea>
+                <textarea onChange={onChangeTitle} value={title} placeholder='제목' style={{ width: '60%' }}></textarea>
+                <textarea onChange={onChangeWriter} value={writer} placeholder='작성자' style={{ width: '20%' }}></textarea>
             </TitleDiv>
             <ContentDiv>
-                <textarea onChange={onChangeContent} value={content} placeholder='내용' style={{width: '80%', height: '300px'}}></textarea>
+                <textarea onChange={onChangeContent} value={content} placeholder='내용' style={{ width: '80%', height: '300px' }}></textarea>
             </ContentDiv>
             <TailDiv>
                 <button onClick={onClickBackPage}>뒤로가기</button>

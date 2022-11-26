@@ -44,10 +44,6 @@ const TailDiv = styled.div`
 
 function Noticeboard() {
     const [board, setBoard] = useState([]);
-    // const [title, setTitle] = useState([]);
-    // const [writer, setWriter] = useState('');
-    // const [date, setDate] = useState('');
-    // const [content, setContent] = useState('');
     const [count, setCount] = useState(0);
 
     useEffect(() => {
@@ -63,6 +59,7 @@ function Noticeboard() {
             })
             .then((json) => {
                 setBoard(json);
+                setCount(Object.keys(json).length);
             })
             .catch((err) => {
                 console.log(err);
@@ -71,8 +68,9 @@ function Noticeboard() {
 
     const navigate = useNavigate();
 
-    const move_view = () => {
-        navigate('/noticeboard/view')
+    const move_view = (e) => {
+        console.log(e.target.innerText);
+        navigate('/noticeboard/view', {state: {test: e.target.innerText}});
     }
 
     const move_write = () => {
@@ -80,41 +78,18 @@ function Noticeboard() {
         navigate('/noticeboard/write');
     }
 
-    // const bring_row = () => {
-    //     return (
-    //         <tr>
-    //             <Td>1</Td>
-    //             <Td onClick={move_view}>1</Td>
-    //             <Td>1</Td>
-    //             <Td>1</Td>
-    //         </tr>
-    //     )
-    // }
-
-    // const aaa = [
-    //     {index:1, id:1, pw:'a'},
-    //     {index:2, id:2, pw:'b'}
-    // ]
-
-    // console.log(board)
-    // console.log(board[2])
-
-    // for(let element in board[2]){
-    //     console.log(`${element} // ${board[element]}`)
-    // }
-
-    // console.log(Object.keys(board))
-    // console.log(Object.values(board))
-
-    const test = () => {
+    const body_row = () => {
         return (
-            <div>
-                {
-                    board.map((item, index) => {
-                        return <div>{item.writer}</div>
-                    })
-                }
-            </div>
+            board.map((item, index) => {
+                return (
+                    <tr>
+                        <Td><div>{index}</div></Td>
+                        <Td><div onClick={move_view}>{item.title}</div></Td>
+                        <Td>{item.writer}</Td>
+                        <Td>{item.date}</Td>
+                    </tr>  
+                )
+            })
         )
     }
 
@@ -141,19 +116,7 @@ function Noticeboard() {
                             </tr>
                         </thead>
                         <tbody >
-                            {/* <tr>
-                                <Td>1</Td>
-                                <Td onClick={move_view}>1</Td>
-                                <Td>1</Td>
-                                <Td>1</Td>
-                            </tr>
-                            <tr>
-                                <Td>2</Td>
-                                <Td>2</Td>
-                                <Td>2</Td>
-                                <Td>2</Td>
-                            </tr> */}
-                            {/* {bring_row()} */}
+                            {body_row()}
                         </tbody>
                     </Table>
                 </div>
@@ -161,9 +124,6 @@ function Noticeboard() {
             <TailDiv>
                 <button onClick={move_write}>글쓰기</button>
             </TailDiv>
-
-            <div>{test()}</div>
-
         </Frame>
     )
 }
