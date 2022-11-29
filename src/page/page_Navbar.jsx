@@ -7,7 +7,6 @@ const NavbarDiv = styled.div`
     // border: 1px solid black;
     width: 100px;
     height: 100%;
-    
 `;
 
 const Ul = styled.ul`
@@ -25,11 +24,7 @@ function Navbar() {
     return (
         <NavbarDiv>
             <Link to='/'>
-                <img
-                    style={{width: "90px", height: "70px", margin: "20px 5px"}}
-                    src='/images/logo.png'
-                    alt='로고'
-                />
+                <img style={{width: "90px", height: "70px", margin: "20px 5px", borderRadius: '20px'}} src='/images/logo.png' alt='로고'/>
             </Link>
             <Ul>
                 <Li>

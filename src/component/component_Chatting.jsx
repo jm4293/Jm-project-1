@@ -24,18 +24,18 @@ const MessageDiv = styled.div`
 `;
 
 const SendMessageDiv = styled.div`
-    width: 450px;
+    width: 350px;
     height: 100%;
 `;
 
 const ReceiveMessageDiv = styled.div`
-    width: 450px;
+    width: 350px;
     height: 100%;
     border-right: 1px solid black;
 `;
 
 const InputMessageDiv = styled.div`
-    width: 900px
+    width: 700px
     height: 100%;
     border-top: 1px solid black;
 `;

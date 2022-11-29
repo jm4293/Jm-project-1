@@ -22,8 +22,9 @@ const RootDiv = styled.div`
 const HeaderDiv = styled.div`
     display: flex;
     background-color: #eee;
-    width: 1000px;
-    height: 1000px;
+    border-radius: 20px;
+    width: 800px;
+    height: 800px;
     // border: 1px solid blue;
 `
 

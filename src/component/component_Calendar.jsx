@@ -3,39 +3,39 @@ import styled from "styled-components";
 import {format, addMonths, subMonths, getMonth} from "date-fns";
 
 const FrameDiv = styled.div`
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
+    // border: 1px solid black;
 `;
 
 const HeaderDiv = styled.div`
-    width: 100%;
-    height: 75px;
+    width: 700px;
+    height: 30px;
 `;
 
 const MonthDiv = styled.div`
-    width: 100%;
-    height: 125px;
+    width: 700px;
+    height: 70px;
     display: flex;
 `;
 
 const MonthListDiv = styled.div`
     border: 1px solid black;
     width: calc(100%/7);
-    height: 100%;    
+    // height: 100%;    
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
 const DayDiv = styled.div`
-    width: 100%;
-    height: 800px;
+    width: 700px;
+    height: 700px;
     display: flex;
     flex-wrap: wrap;
 `;
 
 const DayListDiv = styled.div`
-    // background-color: snow;
     width: calc(100%/7);
     display: flex;
     justify-content: center;
@@ -103,7 +103,6 @@ function Calendar() {
 
     return (
         <FrameDiv>
-            <div>
                 <HeaderDiv>
                     <HeaderCell/>
                 </HeaderDiv>
@@ -113,7 +112,6 @@ function Calendar() {
                 <DayDiv>
                     <DayCell/>
                 </DayDiv>
-            </div>
         </FrameDiv>
     )
 }
