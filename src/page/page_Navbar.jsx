@@ -7,7 +7,6 @@ const NavbarDiv = styled.div`
     // border: 1px solid black;
     width: 100px;
     height: 100%;
-    
 `;
 
 const Ul = styled.ul`

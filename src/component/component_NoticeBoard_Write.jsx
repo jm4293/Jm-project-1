@@ -95,7 +95,7 @@ function Write() {
                     <button onClick={onClickRegister}>등록</button>
                 </div>
             </HeaderDiv>
-            <TitleDiv>
+            <TitleDiv>`
                 <textarea onChange={onChangeTitle} value={title} placeholder='제목' style={{ width: '60%' }}></textarea>
                 <textarea onChange={onChangeWriter} value={writer} placeholder='작성자' style={{ width: '20%' }}></textarea>
             </TitleDiv>

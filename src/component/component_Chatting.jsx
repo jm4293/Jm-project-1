@@ -35,7 +35,7 @@ const ReceiveMessageDiv = styled.div`
 `;
 
 const InputMessageDiv = styled.div`
-    width: 900px
+    width: 700px;
     height: 100%;
     border-top: 1px solid black;
 `;

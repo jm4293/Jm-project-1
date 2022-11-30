@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 
 const Frame = styled.div`
@@ -15,17 +15,17 @@ function Login() {
     const [emailRead, setEmailRead] = useState([]);
     const [passwordRead, setPasswordRead] = useState([]);
 
-    function handleEmail(e) {
+    const onChangeEmail = (e) => {
         setEmailUpdate(e.target.value);
     }
 
-    function handlePassword(e) {
+    const onChangePassword = (e) => {
         setPasswordUpdate(e.target.value);
     }
 
     // 회원가입
     // emailUpdate, passwordUpdate db에 저장
-    function onClickButtonUpdate() {
+    const onClickButtonUpdate = () => {
         const post = {
             email: emailUpdate,
             password: passwordUpdate
@@ -46,7 +46,7 @@ function Login() {
 
     // 이메일, 비밀번호 찾기
     // emailUpdate, passwordUpdate db에서 불러오기
-    function onClickButtonRead() {
+    const onClickButtonRead = () => {
         fetch('http://localhost:3001/userInfoRead', {
             method: 'post',
             headers: {
@@ -54,14 +54,20 @@ function Login() {
             },
             body: JSON.stringify()
         })
-            .then((res) => res.json())
+            .then((res) => {
+                return res.json()
+            })
             .then((json) => {
                 console.log(json);  // #02
+                // setEmailRead([...emailRead, json[0].user_email]);
 
-                json.map(content => {
+                json.map((content) => {
                     console.log(content.user_email);
                     console.log(content.user_password);
                 })
+            })
+            .catch((err) => {
+                console.log(err);
             })
     }
 
@@ -69,27 +75,27 @@ function Login() {
         <Frame>
             {/*로그인 입력*/}
             <div className='contentWrap'>
-                <div style={{ marginTop: '6px' }}>이메일</div>
+                <div>이메일</div>
                 <div className='inputWrap'>
-                    <input className='input' type='text' placeholder='example@gmail.com' value={emailUpdate} onChange={handleEmail} />
+                    <input type='text' onChange={onChangeEmail} value={emailUpdate} placeholder='example@gmail.com'/>
                 </div>
 
-                <div style={{ marginTop: '15px' }}>비밀번호</div>
+                <div style={{marginTop: '15px'}}>비밀번호</div>
                 <div className='inputWrap'>
-                    <input className='input' type='passwordUpdate' placeholder='8자 이상' value={passwordUpdate} onChange={handlePassword} />
+                    <input type='password' onChange={onChangePassword} value={passwordUpdate} placeholder='8자 이상'/>
                 </div>
             </div>
 
             {/* 로그인 버튼 */}
-            <div style={{ marginTop: '10px' }}>
+            <div style={{marginTop: '10px'}}>
                 <button onClick={onClickButtonUpdate}>회원가입</button>
             </div>
 
             {/* 유저 이메일 비밀번호 출력 */}
-            <div style={{ marginTop: '5px' }}>
+            <div style={{marginTop: '5px'}}>
+                <button onClick={onClickButtonRead}>이메일, 비밀번호 찾기</button>
                 <div>{emailRead}</div>
                 <div>{passwordRead}</div>
-                <button onClick={onClickButtonRead}>이메일, 비밀번호 찾기</button>
             </div>
         </Frame>
     )

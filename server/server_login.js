@@ -4,9 +4,10 @@ const PORT = 3001;
 
 // db 선언
 const bodyparser = require('body-parser');
+const cors = require('cors');
 const mysql = require('mysql');
 
-let connection = mysql.createConnection({
+const connection = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
     password: '123456789',
@@ -14,9 +15,7 @@ let connection = mysql.createConnection({
 })
 connection.connect();
 
-let cors = require('cors');
 app.use(cors());
-
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
@@ -42,7 +41,7 @@ app.post('/userInfoUpdate', (req, res) => {
         }
         else {
             console.log("mysql update success")
-            console.log(rows);
+            // console.log(rows);
         }
     })
 })
@@ -56,7 +55,7 @@ app.post('/userInfoRead', (req, res) => {
         }
         else {
             console.log("mysql read success");
-            res.send(rows);  // #02
+            res.send(rows);
         }
     })
 })

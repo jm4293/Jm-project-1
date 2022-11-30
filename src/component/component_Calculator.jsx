@@ -120,6 +120,7 @@ function Calculator() {
             <div>
                 <DisplayDiv>
                     <DisplayNumberDiv>{displayNumber}</DisplayNumberDiv>
+                    
                 </DisplayDiv>
                 <ButtonDiv>
                     <NumberButton onClick={clear} value={''}>()</NumberButton>
