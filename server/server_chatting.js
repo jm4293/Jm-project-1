@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 3002;
 
-var http = require("http").createServer(app);
+const http = require("http").createServer(app);
 const io = require("socket.io")(http, {
     cors: {
         origin: "http://localhost:3000",
