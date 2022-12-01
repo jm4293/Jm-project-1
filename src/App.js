@@ -24,7 +24,7 @@ const HeaderDiv = styled.div`
     background-color: #eee;
     width: 800px;
     height: 800px;
-    // border: 1px solid blue;
+    border-radius: 20px;
 `
 
 function App() {

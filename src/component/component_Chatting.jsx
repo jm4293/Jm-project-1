@@ -11,7 +11,6 @@ const socket = io.connect("http://localhost:3002")
 const Frame = styled.div`
     width: 100%;
     height: 100%;
-    // border: 1px solid black;
     border-left: none;
     // display: flex;
     // flex-wrap: wrap;
@@ -24,12 +23,11 @@ const MessageDiv = styled.div`
 `;
 
 const SendMessageDiv = styled.div`
-    width: 450px;
-    height: 100%;
+    width: 350px;
 `;
 
 const ReceiveMessageDiv = styled.div`
-    width: 450px;
+    width: 350px;
     height: 100%;
     border-right: 1px solid black;
 `;
@@ -66,8 +64,6 @@ function Chatting() {
         setMsg('');
 
         socket.on("receive message", (item) => {
-            const message = "id: " + item.name + " message: " + item.msg;
-            // console.log(message);
             setReceiveMessageName(item.name);
             setReceiveMessageMsg(item.msg);
         })
@@ -88,14 +84,18 @@ function Chatting() {
             <MessageDiv>
                 <div>
                     <ReceiveMessageDiv>
-                        <div>받은 메세지</div>
-                        <p>{`이름: ${receiveMessageName} - 보낸 메세지: ${receiveMessageMsg}`}</p>
+                        <div style={{padding: '10px 10px'}}>
+                            <div>받은 메세지</div>
+                            <p>{`이름: ${receiveMessageName} - 보낸 메세지: ${receiveMessageMsg}`}</p>
+                        </div>
                     </ReceiveMessageDiv>
                 </div>
                 <div>
                     <SendMessageDiv>
-                        <div>보낸 메세지</div>
-                        <p>{`이름: ${sendMessageName} - 보낸 메세지: ${sendMessageMsg}`}</p>
+                        <div style={{padding: '10px 10px'}}>
+                            <div>보낸 메세지</div>
+                            <p>{`이름: ${sendMessageName} - 보낸 메세지: ${sendMessageMsg}`}</p>
+                        </div>
                     </SendMessageDiv>
                 </div>
             </MessageDiv>
@@ -104,10 +104,10 @@ function Chatting() {
                 <InputMessageDiv>
                     <form onSubmit={sendMsg} style={{display: 'flex', justifyContent: 'space-between'}}>
                         <div>
-                            <input type='text' onChange={inputName} value={name} name='name' id='id' placeholder='아이디' />
-                            <input type='text' onChange={inputMsg} value={msg} name='msg' id='msg' placeholder='내용' />
+                            <input type='text' onChange={inputName} value={name} name='name' id='id' placeholder='아이디' style={{margin: '5px 5px', width: '150px'}} />
+                            <input type='text' onChange={inputMsg} value={msg} name='msg' id='msg' placeholder='내용' style={{width: '300px'}}/>
                         </div>
-                        <button type='submit'>전송</button>
+                        <button type='submit' style={{margin: '5px 5px'}}>전송</button>
                     </form>
                 </InputMessageDiv>
             </div>

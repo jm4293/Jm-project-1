@@ -17,7 +17,8 @@ const DisplayDiv = styled.div`
 const DisplayNumberDiv = styled.div`
     width: 100%;
     height: 80%;
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +83,7 @@ function Calculator() {
     }
 
     // 계산
-    const result = (e) => {
+    const result = () => {
         switch (calculator) {
             case '+':
                 setResultNumber(parseInt(nextNumber) + parseInt(prevNumber));

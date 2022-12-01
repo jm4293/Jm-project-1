@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Frame = styled.div`
     width: 100%;
@@ -36,7 +36,13 @@ function Write() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [writer, setWriter] = useState('');
+    // const [now, setNow] = useState('');
     const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     const date = new Date()
+    //     setNow(`${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}시 ${date.getMinutes()}분`);
+    // }, [content])
 
     const onChangeTitle = (e) => {
         setTitle(e.target.value);
@@ -56,10 +62,15 @@ function Write() {
             return
         }
 
+        const date = new Date();
+        const now = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}시 ${date.getMinutes()}분`;
+        console.log(now)
+
         const post = {
             title: title,
             writer: writer,
             content: content,
+            date: now,
         }
 
         fetch('http://localhost:3003/board/register', {
@@ -69,10 +80,6 @@ function Write() {
             },
             body: JSON.stringify(post)
         })
-            .then((res) => res.json())
-            .then((json) => {
-                console.log(json);
-            })
             .catch((err) => {
                 console.log(err);
             })
@@ -90,20 +97,22 @@ function Write() {
     return (
         <Frame>
             <HeaderDiv>
-                <div><h1>글쓰기</h1></div>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <button onClick={onClickRegister}>등록</button>
+                <div style={{marginLeft: '5px'}}>
+                    <h1>글쓰기</h1>
+                </div>
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    <button onClick={onClickRegister} style={{marginRight: '5px'}}>등록</button>
                 </div>
             </HeaderDiv>
-            <TitleDiv>`
-                <textarea onChange={onChangeTitle} value={title} placeholder='제목' style={{ width: '60%' }}></textarea>
-                <textarea onChange={onChangeWriter} value={writer} placeholder='작성자' style={{ width: '20%' }}></textarea>
+            <TitleDiv>
+                <textarea onChange={onChangeTitle} value={title} placeholder='제목' style={{width: '60%'}}></textarea>
+                <textarea onChange={onChangeWriter} value={writer} placeholder='작성자' style={{width: '20%'}}></textarea>
             </TitleDiv>
             <ContentDiv>
-                <textarea onChange={onChangeContent} value={content} placeholder='내용' style={{ width: '80%', height: '300px' }}></textarea>
+                <textarea onChange={onChangeContent} value={content} placeholder='내용' style={{width: '80%', height: '300px'}}></textarea>
             </ContentDiv>
             <TailDiv>
-                <button onClick={onClickBackPage}>뒤로가기</button>
+                <button onClick={onClickBackPage} style={{margin: '10px 5px'}}>뒤로가기</button>
             </TailDiv>
         </Frame>
     )

@@ -21,23 +21,7 @@ app.use(bodyparser.json());
 
 app.get('/', (req, res) => {
     res.send(`${PORT} 실행`);
-})
-
-app.post('/board/register', (req, res) => {
-    const title = req.body.title;
-    const writer = req.body.writer;
-    const content = req.body.content;
-
-    connection.query('INSERT INTO noticeboard (title, writer, content) VALUES(?, ?, ?)', [title, writer, content], (err, rows, fields) => {
-        if (err) {
-            console.log("mysql update fail");
-            console.log(err);
-        } else {
-            console.log("mysql update success")
-            // console.log(rows);
-        }
-    })
-})
+});
 
 app.post('/board', (req, res) => {
     connection.query('SELECT * FROM noticeboard', (err, rows, fields) => {
@@ -49,12 +33,33 @@ app.post('/board', (req, res) => {
             console.log("mysql read success");
             res.send(rows);
         }
-    })
-})
+    });
+});
+
+app.post('/board/register', (req, res) => {
+    const title = req.body.title;
+    const writer = req.body.writer;
+    const content = req.body.content;
+    const date = req.body.date;
+
+    connection.query('INSERT INTO noticeboard (title, writer, content, date) VALUES(?, ?, ?, ?)', [title, writer, content, date], (err, rows, fields) => {
+        if (err) {
+            console.log("mysql update fail");
+            console.log(err);
+        } else {
+            console.log("mysql update success")
+            // console.log(rows);
+        }
+    });
+});
+
+app.post('/board/view', (req, res) => {
+
+});
 
 app.listen(PORT, () => {
     console.log(`server on port: ${PORT}`);
-})
+});
 
 
 

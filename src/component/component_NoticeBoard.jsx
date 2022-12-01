@@ -1,30 +1,23 @@
-import { id } from "date-fns/locale";
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useState} from "react";
+import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 
 const Frame = styled.div`
     width: 100%;
     height: 100%;
-    // border: 1px solid black;
 `;
 
 const HeaderDiv = styled.div`
     width: 100%;
-    // height: 15%;
-    // border: 1px solid red;
 `;
 
 const ContentDiv = styled.div`
     width: 100%;
-    // height: 85%;
-    // border: 1px solid blue;
 `;
 
 const Table = styled.table`
     width: 100%;
-    border: 1px solid black;
     border-collapse: collapse;
 `;
 
@@ -69,12 +62,10 @@ function Noticeboard() {
     const navigate = useNavigate();
 
     const move_view = (e) => {
-        console.log(e.target.innerText);
         navigate('/noticeboard/view', {state: {test: e.target.innerText}});
     }
 
     const move_write = () => {
-        // navigate('/noticeboard/write', {state: {id:'abc', pw:'123'}});
         navigate('/noticeboard/write');
     }
 
@@ -83,11 +74,19 @@ function Noticeboard() {
             board.map((item, index) => {
                 return (
                     <tr>
-                        <Td><div>{index}</div></Td>
-                        <Td><div onClick={move_view}>{item.title}</div></Td>
-                        <Td>{item.writer}</Td>
-                        <Td>{item.date}</Td>
-                    </tr>  
+                        <Td>
+                            <div>{index}</div>
+                        </Td>
+                        <Td>
+                            <div onClick={move_view}>{item.title}</div>
+                        </Td>
+                        <Td>
+                            <div>{item.writer}</div>
+                        </Td>
+                        <Td>
+                            <div>{item.date}</div>
+                        </Td>
+                    </tr>
                 )
             })
         )
@@ -96,33 +95,33 @@ function Noticeboard() {
     return (
         <Frame>
             <HeaderDiv>
-                <div>
+                <div style={{padding: '5px 5px'}}>
                     <h1>전체글 보기</h1>
                 </div>
-                <div>
+                <div style={{padding: '5px 5px'}}>
                     {`${count} 개의 글`}
                 </div>
             </HeaderDiv>
             <ContentDiv>
-                <div style={{ width: '100%', height: '100%' }}>
+                <div style={{width: '98%', height: '100%', padding: '5px 5px'}}>
                     <Table>
                         <thead>
-                            <tr>
-                                <Th style={{ width: '10%' }}>index</Th>
-                                <Th style={{ width: '60%' }}>제목</Th>
-                                <Th style={{ width: '15%' }}>작성자</Th>
-                                <Th style={{ width: '15%' }}>작성일</Th>
-                                {/*<Th>조회</Th>*/}
-                            </tr>
+                        <tr>
+                            <Th style={{width: '6%'}}>index</Th>
+                            <Th style={{width: '50%'}}>제목</Th>
+                            <Th style={{width: '10%'}}>작성자</Th>
+                            <Th style={{width: '24%'}}>작성일</Th>
+                            {/*<Th>조회</Th>*/}
+                        </tr>
                         </thead>
-                        <tbody >
+                        <tbody>
                             {body_row()}
                         </tbody>
                     </Table>
                 </div>
             </ContentDiv>
             <TailDiv>
-                <button onClick={move_write}>글쓰기</button>
+                <button onClick={move_write} style={{marginRight: '5px'}}>글쓰기</button>
             </TailDiv>
         </Frame>
     )

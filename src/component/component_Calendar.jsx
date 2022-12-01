@@ -1,27 +1,33 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
-import {format, addMonths, subMonths, getMonth} from "date-fns";
+import {format, addMonths, subMonths} from "date-fns";
 
 const FrameDiv = styled.div`
-    width: 100%;
-    height: 100%;
+    width: 680px;
+    height: 780px;
+    position: absolute;
+    left: 13.5%;
+    top: 1%;
 `;
 
 const HeaderDiv = styled.div`
     width: 100%;
-    height: 75px;
+    height: 3%;
+    padding: 5px 5px;
 `;
 
 const MonthDiv = styled.div`
     width: 100%;
-    height: 125px;
+    height: 7%;
+    border: 2px solid black;
+    border-radius: 10px;
+    // border-right: none;
     display: flex;
 `;
 
 const MonthListDiv = styled.div`
-    border: 1px solid black;
+    // border-right: 1px solid black;
     width: calc(100%/7);
-    height: 100%;    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,13 +35,12 @@ const MonthListDiv = styled.div`
 
 const DayDiv = styled.div`
     width: 100%;
-    height: 800px;
+    height: 90%;
     display: flex;
     flex-wrap: wrap;
 `;
 
 const DayListDiv = styled.div`
-    // background-color: snow;
     width: calc(100%/7);
     display: flex;
     justify-content: center;
@@ -57,17 +62,17 @@ function Calendar() {
     const HeaderCell = () => {
         return <div style={{display: 'flex'}}>
             <div style={{width: '40%'}}>
-                <div className="TodayMonth">
+                <div className="TodayMonth" style={{marginLeft: '5px'}}>
                     {format(current, 'yy년 MM월 dd일')}
                 </div>
             </div>
             <div style={{width: '60%'}}>
                 <div className="Button" style={{display: 'flex', justifyContent: 'right'}}>
                     <div className="PrevButton">
-                        <button onClick={prevButton}>prev</button>
+                        <button onClick={prevButton} style={{marginRight: '5px'}}>prev</button>
                     </div>
                     <div className="NextButton">
-                        <button onClick={nextButton}>next</button>
+                        <button onClick={nextButton} style={{marginRight: '10px'}}>next</button>
                     </div>
                 </div>
             </div>
@@ -103,7 +108,6 @@ function Calendar() {
 
     return (
         <FrameDiv>
-            <div>
                 <HeaderDiv>
                     <HeaderCell/>
                 </HeaderDiv>
@@ -113,7 +117,6 @@ function Calendar() {
                 <DayDiv>
                     <DayCell/>
                 </DayDiv>
-            </div>
         </FrameDiv>
     )
 }
