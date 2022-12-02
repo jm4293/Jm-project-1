@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Noticeboard from "../component/component_NoticeBoard";
+import Noticeboard from "../component/NoticeBoard";
 
 const NoticeboardDiv = styled.div`
     width: 100%;

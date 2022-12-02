@@ -32,9 +32,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "login": "nodemon ./server/server_login.js",
-    "chatting": "nodemon ./server/server_chatting.js",
-    "board": "nodemon ./server/server_noticeboard.js"
+    "login": "nodemon server/login.js",
+    "chatting": "nodemon server/chatting.js",
+    "board": "nodemon server/noticeboard.js"
   },
   "eslintConfig": {
     "extends": [

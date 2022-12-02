@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Weather from '../component/component_Weather';
+import Weather from '../component/Weather';
 
 const HomeDiv = styled.div`
     width: 100%;

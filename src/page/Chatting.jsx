@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Chatting from "../component/component_Chatting";
+import Chatting from "../component/Chatting";
 
 const ChattingDiv = styled.div`
     width: 100%;

@@ -1,15 +1,15 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from "./page/page_Home";
-import Navbar from "./page/page_Navbar";
-import Login from "./page/page_Login";
-import Calculator from "./page/page_Calculator";
-import Calendar from "./page/page_Calendar";
-import Chatting from "./page/page_Chatting";
-import Weather from "./page/page_Weather";
-import Noticeboard from "./page/page_NoticeBoard";
-import NoticeBoard_Write from "./component/component_NoticeBoard_Write";
-import NoticeBoard_View from "./component/component_NoticeBoard_View";
-import NotFound from './page/page_NotFound';
+import Home from "./page/Home";
+import Navbar from "./page/Navbar";
+import Login from "./page/Login";
+import Calculator from "./page/Calculator";
+import Calendar from "./page/Calendar";
+import Chatting from "./page/Chatting";
+import Weather from "./page/Weather";
+import Noticeboard from "./page/NoticeBoard";
+import NoticeBoard_Write from "./component/NoticeBoard_Write";
+import NoticeBoard_View from "./component/NoticeBoard_View";
+import NotFound from './page/NotFound';
 
 import styled from "styled-components";
 

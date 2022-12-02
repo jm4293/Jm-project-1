@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Calculator from '../component/component_Calculator';
+import Calculator from '../component/Calculator';
 
 const CalculatorDiv = styled.div`
     // width: 100%;
