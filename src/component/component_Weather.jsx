@@ -43,14 +43,14 @@ function Weather() {
     const [location, setLocation] = useState('');
     const [result, setResult] = useState({});
     const API_KEY = "6bedce92f708cdeb65b084ee01b825c0"; // 각자 개인의 API KEY를 발급받아 사용
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=${API_KEY}`;
 
     const searchWeather = async (e) => {
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${e.target.value}&appid=${API_KEY}`;
+
         if (e.key === 'Enter') {
             try {
                 const data = await axios({method: 'get', url: url,})
                 setResult(data);
-                console.log(data);
             } catch (err) {
                 alert(err);
             }
@@ -65,7 +65,7 @@ function Weather() {
         <Frame>
             <AppWrap>
                 <div className="appContentWrap">
-                    <input placeholder="도시를 입력하세요" value={location} onChange={(e) => setLocation(e.target.value)} type="text" onKeyDown={searchWeather}/>
+                    <input placeholder="도시를 입력하세요" value={location} onChange={(e) => setLocation(e.target.value)} type="text" onKeyDown={searchWeather} style={{textAlign: 'center'}}/>
                     {Object.keys(result).length !== 0 && (
                         <ResultWrap>
                             <div className="city">{result.data.name}</div>

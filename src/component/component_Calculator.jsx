@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const FrameDiv = styled.div`
-    width: 100%;
+    width: 85%;
     height: 100%;
+    position: absolute;
+    left: 14%;
+    top: 25%;
 `;
 
 const DisplayDiv = styled.div`
-    width: 80%;
+    width: 90%;
     height: 100px;
-    position: absolute;
-    left: 15%;
-    top: 3%
+    margin-left: 40px;
+    margin-bottom: 15px;
 `
 
 const DisplayNumberDiv = styled.div`
@@ -28,7 +30,7 @@ const DisplayNumberDiv = styled.div`
 const ButtonDiv = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin: 150px 5px;
+    // margin: 150px 5px;
 `;
 
 const NumberButton = styled.button`
@@ -118,10 +120,8 @@ function Calculator() {
 
     return (
         <FrameDiv>
-            <div>
                 <DisplayDiv>
                     <DisplayNumberDiv>{displayNumber}</DisplayNumberDiv>
-                    
                 </DisplayDiv>
                 <ButtonDiv>
                     <NumberButton onClick={clear} value={''}>()</NumberButton>
@@ -145,12 +145,6 @@ function Calculator() {
                     <NumberButton onClick={clear} value={''}>.</NumberButton>
                     <CalculationButton onClick={result} value={'='}>=</CalculationButton>
                 </ButtonDiv>
-                <div>prevNumber: {prevNumber}</div>
-                <div>nextNumber: {nextNumber}</div>
-                <div>resultNumber: {resultNumber}</div>
-                <div>displayNumber: {displayNumber}</div>
-                <div>calculator: {calculator}</div>
-            </div>
         </FrameDiv>
     )
 }

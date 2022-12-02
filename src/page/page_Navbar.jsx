@@ -16,7 +16,7 @@ const Ul = styled.ul`
 
 const Li = styled.li`
     margin-top: 20px;
-    margin-left: 25px;
+    margin-left: 15px;
     font-weight: 600;
 `;
 
@@ -40,10 +40,13 @@ function Navbar() {
                     <Link to="/weather">날씨</Link>
                 </Li>
                 <Li>
+                    <Link to="/login">로그인</Link>
+                </Li>
+                <Li>
                     <Link to="/noticeboard">게시판</Link>
                 </Li>
                 <Li>
-                    <Link to="four">넷</Link>
+                    <Link to="four">없는 페이지</Link>
                 </Li>
             </Ul>
         </NavbarDiv>

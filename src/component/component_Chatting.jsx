@@ -60,6 +60,9 @@ function Chatting() {
             name: name,
             msg: msg,
         });
+        setSendMessageName([...sendMessageName, name]);
+        setSendMessageName(name);
+        setSendMessageMsg(msg);
         setName('');
         setMsg('');
 
@@ -71,13 +74,15 @@ function Chatting() {
 
     const inputName = (e) => {
         setName(e.target.value);
-        setSendMessageName(e.target.value);
+        // setSendMessageName(e.target.value);
     }
 
     const inputMsg = (e) => {
         setMsg(e.target.value);
-        setSendMessageMsg(e.target.value);
+        // setSendMessageMsg(e.target.value);
     }
+
+    // console.log(sendMessageName)
 
     return (
         <Frame>
@@ -111,6 +116,7 @@ function Chatting() {
                     </form>
                 </InputMessageDiv>
             </div>
+
         </Frame>
     )
 }

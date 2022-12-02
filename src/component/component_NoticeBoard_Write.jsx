@@ -36,13 +36,7 @@ function Write() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [writer, setWriter] = useState('');
-    // const [now, setNow] = useState('');
     const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     const date = new Date()
-    //     setNow(`${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}시 ${date.getMinutes()}분`);
-    // }, [content])
 
     const onChangeTitle = (e) => {
         setTitle(e.target.value);
@@ -64,7 +58,6 @@ function Write() {
 
         const date = new Date();
         const now = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}시 ${date.getMinutes()}분`;
-        console.log(now)
 
         const post = {
             title: title,
@@ -80,14 +73,16 @@ function Write() {
             },
             body: JSON.stringify(post)
         })
+            .then((res) => res.json())
+            .then((json) => {
+                setTitle('');
+                setContent('');
+                setWriter('');
+                alert('등록완료');
+            })
             .catch((err) => {
                 console.log(err);
             })
-
-        setTitle('');
-        setContent('');
-        setWriter('');
-        alert('등록완료');
     }
 
     const onClickBackPage = () => {

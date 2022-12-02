@@ -29,6 +29,15 @@ const Td = styled.td`
     border: 1px solid black;
 `;
 
+const TdClick = styled.td`
+    border: 1px solid black;
+
+    &:hover {
+        background-color : black;
+        color : white;
+    }
+`;
+
 const TailDiv = styled.div`
     margin-top: 20px;
     display: flex;
@@ -61,8 +70,8 @@ function Noticeboard() {
 
     const navigate = useNavigate();
 
-    const move_view = (e) => {
-        navigate('/noticeboard/view', {state: {test: e.target.innerText}});
+    const move_view = (item) => {
+        navigate('/noticeboard/view', {state: {title: item.title, writer: item.writer, content: item.content, date: item.date}});
     }
 
     const move_write = () => {
@@ -73,18 +82,18 @@ function Noticeboard() {
         return (
             board.map((item, index) => {
                 return (
-                    <tr>
+                    <tr key={index}>
                         <Td>
-                            <div>{index}</div>
+                            <div style={{textAlign: 'center'}}>{index}</div>
+                        </Td>
+                        <TdClick>
+                            <div onClick={() => {move_view(item)}} style={{textAlign: 'center'}}>{item.title}</div>
+                        </TdClick>
+                        <Td>
+                            <div style={{textAlign: 'center'}}>{item.writer}</div>
                         </Td>
                         <Td>
-                            <div onClick={move_view}>{item.title}</div>
-                        </Td>
-                        <Td>
-                            <div>{item.writer}</div>
-                        </Td>
-                        <Td>
-                            <div>{item.date}</div>
+                            <div style={{textAlign: 'center'}}>{item.date}</div>
                         </Td>
                     </tr>
                 )
@@ -104,15 +113,14 @@ function Noticeboard() {
             </HeaderDiv>
             <ContentDiv>
                 <div style={{width: '98%', height: '100%', padding: '5px 5px'}}>
-                    <Table>
+                    <Table style={{border: '2px solid black'}}>
                         <thead>
-                        <tr>
-                            <Th style={{width: '6%'}}>index</Th>
-                            <Th style={{width: '50%'}}>제목</Th>
-                            <Th style={{width: '10%'}}>작성자</Th>
-                            <Th style={{width: '24%'}}>작성일</Th>
-                            {/*<Th>조회</Th>*/}
-                        </tr>
+                            <tr>
+                                <Th style={{width: '6%'}}>index</Th>
+                                <Th style={{width: '50%'}}>제목</Th>
+                                <Th style={{width: '10%'}}>작성자</Th>
+                                <Th style={{width: '24%'}}>작성일</Th>
+                            </tr>
                         </thead>
                         <tbody>
                             {body_row()}

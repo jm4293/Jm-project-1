@@ -48,12 +48,12 @@ app.post('/board/register', (req, res) => {
             console.log(err);
         } else {
             console.log("mysql update success")
-            // console.log(rows);
+            res.send(rows);
         }
     });
 });
 
-app.post('/board/view', (req, res) => {
+app.post('/board/view/comment', (req, res) => {
 
 });
 

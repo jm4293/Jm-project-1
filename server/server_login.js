@@ -32,7 +32,6 @@ app.post('/userInfoUpdate', (req, res) => {
         email: email,
         password: password
     };
-    res.send(sendText);  // #01 client에서 입력한 email, password을 server에서 받고 다시 client로 보내기
 
     connection.query('INSERT INTO user_info (user_email, user_password) VALUES(?, ?)', [email, password], (err, rows, fields) => {
         if (err) {
@@ -41,7 +40,7 @@ app.post('/userInfoUpdate', (req, res) => {
         }
         else {
             console.log("mysql update success")
-            // console.log(rows);
+            res.send(sendText);  // #01 client에서 입력한 email, password을 server에서 받고 다시 client로 보내기
         }
     })
 })

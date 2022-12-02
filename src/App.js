@@ -1,4 +1,5 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Home from "./page/page_Home";
 import Navbar from "./page/page_Navbar";
 import Login from "./page/page_Login";
 import Calculator from "./page/page_Calculator";
@@ -34,12 +35,13 @@ function App() {
                 <BrowserRouter>
                     <Navbar/>
                     <Routes>
-                        <Route path='/' element={<Login/>}/>
+                        <Route path='/' element={<Home/>}/>
                         <Route path='/calculator' element={<Calculator/>}/>
                         <Route path='/calculator/1' element={<Chatting/>}/>
                         <Route path='/calendar' element={<Calendar/>}/>
                         <Route path='/chatting' element={<Chatting/>}/>
                         <Route path='/weather' element={<Weather/>}/>
+                        <Route path='/login' element={<Login/>}/>
                         <Route path='/noticeboard' element={<Noticeboard/>}/>
                         <Route path='/noticeboard/write' element={<NoticeBoard_Write/>}/>
                         <Route path='/noticeboard/view' element={<NoticeBoard_View/>}/>

@@ -60,19 +60,22 @@ function Calendar() {
     }
 
     const HeaderCell = () => {
+        const date = new Date();
+        const today = `${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일`
+
         return <div style={{display: 'flex'}}>
             <div style={{width: '40%'}}>
-                <div className="TodayMonth" style={{marginLeft: '5px'}}>
-                    {format(current, 'yy년 MM월 dd일')}
+                <div className="TodayMonth" style={{fontWeight: 'bold' ,marginLeft: '5px'}}>
+                    Today: {today}
                 </div>
             </div>
             <div style={{width: '60%'}}>
                 <div className="Button" style={{display: 'flex', justifyContent: 'right'}}>
                     <div className="PrevButton">
-                        <button onClick={prevButton} style={{marginRight: '5px'}}>prev</button>
+                        <button onClick={prevButton} style={{fontWeight: 'bold' ,marginRight: '5px'}}>prev</button>
                     </div>
                     <div className="NextButton">
-                        <button onClick={nextButton} style={{marginRight: '10px'}}>next</button>
+                        <button onClick={nextButton} style={{fontWeight: 'bold' ,marginRight: '10px'}}>next</button>
                     </div>
                 </div>
             </div>
@@ -80,7 +83,7 @@ function Calendar() {
     }
 
     const MonthCell = () => {
-        return monthColumn.map((element, index) => (<MonthListDiv key={index}>{element}</MonthListDiv>))
+        return monthColumn.map((element, index) => (<MonthListDiv style={{fontWeight: 'bold'}} key={index}>{element}</MonthListDiv>))
     }
 
     const DayCell = () => {
