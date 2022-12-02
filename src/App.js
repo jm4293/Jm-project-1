@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from "./page/Home";
+import Home from "./component/Home";
 import Navbar from "./page/Navbar";
 import Login from "./page/Login";
 import Calculator from "./page/Calculator";
@@ -9,7 +9,7 @@ import Weather from "./page/Weather";
 import Noticeboard from "./page/NoticeBoard";
 import NoticeBoard_Write from "./component/NoticeBoard_Write";
 import NoticeBoard_View from "./component/NoticeBoard_View";
-import NotFound from './page/NotFound';
+import NotFound from './component/NotFound';
 
 import styled from "styled-components";
 

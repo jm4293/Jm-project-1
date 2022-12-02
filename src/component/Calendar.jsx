@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import {format, addMonths, subMonths} from "date-fns";
+import {addMonths, subMonths} from "date-fns";
 
 const FrameDiv = styled.div`
     width: 680px;
@@ -21,12 +21,10 @@ const MonthDiv = styled.div`
     height: 7%;
     border: 2px solid black;
     border-radius: 10px;
-    // border-right: none;
     display: flex;
 `;
 
 const MonthListDiv = styled.div`
-    // border-right: 1px solid black;
     width: calc(100%/7);
     display: flex;
     justify-content: center;

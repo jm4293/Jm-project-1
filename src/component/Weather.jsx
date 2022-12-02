@@ -21,6 +21,7 @@ const AppWrap = styled.div`
 const ResultWrap = styled.div`
   width: 100%;
   border: 1px black solid;
+  margin-top: 5px;
   padding: 10px;
   border-radius: 20px;
   
