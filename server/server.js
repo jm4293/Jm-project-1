@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+// DB 설정
 const mysql = require('mysql');
 const connection = mysql.createConnection({
     host: '127.0.0.1',
@@ -10,9 +11,11 @@ const connection = mysql.createConnection({
 })
 connection.connect();
 
+// cors 설정
 const cors = require('cors');
 app.use(cors());
 
+// bodyparser 설정
 const bodyparser = require('body-parser');
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
@@ -89,7 +92,6 @@ io.on("connection", (socket) => {
 http.listen(3002, () => {
     console.log(`채팅 서버: 3002`);
 });
-
 
 ////////////////////////
 // noticeboard - 3003 //

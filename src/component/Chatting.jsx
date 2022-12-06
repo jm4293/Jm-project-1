@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import io from "socket.io-client";
 
-// const socket = io.connect("http://localhost:3002", {
-//     cors: { origin: "*" }
-// });
-
 const socket = io.connect("http://localhost:3002")
 
 const Frame = styled.div`
@@ -82,24 +78,22 @@ function Chatting() {
         // setSendMessageMsg(e.target.value);
     }
 
-    // console.log(sendMessageName)
-
     return (
         <Frame>
             <MessageDiv>
                 <div>
                     <ReceiveMessageDiv>
                         <div style={{padding: '10px 10px'}}>
-                            <div>받은 메세지</div>
-                            <p>{`이름: ${receiveMessageName} - 보낸 메세지: ${receiveMessageMsg}`}</p>
+                            <div>받은 내용</div>
+                            <p>{`닉네임: ${receiveMessageName} / 받은 내용: ${receiveMessageMsg}`}</p>
                         </div>
                     </ReceiveMessageDiv>
                 </div>
                 <div>
                     <SendMessageDiv>
                         <div style={{padding: '10px 10px'}}>
-                            <div>보낸 메세지</div>
-                            <p>{`이름: ${sendMessageName} - 보낸 메세지: ${sendMessageMsg}`}</p>
+                            <div>보낸 내용</div>
+                            <p>{`닉네임: ${sendMessageName} / 보낸 내용: ${sendMessageMsg}`}</p>
                         </div>
                     </SendMessageDiv>
                 </div>

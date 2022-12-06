@@ -97,10 +97,6 @@ function Login() {
                 <div>{emailRead}</div>
                 <div>{passwordRead}</div>
             </div>
-
-            <div>
-
-            </div>
         </Frame>
     )
 }

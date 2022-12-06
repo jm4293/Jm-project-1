@@ -73,7 +73,7 @@ function View() {
                 <CommentDiv>
                     <div style={{display: 'flex'}}>
                         <h3>댓글</h3>
-                        <div style={{border: '1px solid black', width:'90%', margin: '10px', padding: '5px'}}>123</div>
+                        <div style={{border: '1px solid black', width:'90%', margin: '10px', padding: '5px'}}></div>
                     </div>
                 </CommentDiv>
             </Tail>
