@@ -5,7 +5,7 @@
 코드 한줄 한줄이 생길때마다 변화되는 웹을 보며 즐기면서 변화에 도전하고있습니다.
 
 Notion: https://jm4293.notion.site/jm4293/Developer-Profile-6d05696846ad422fa48c341b1567c036
+---
 Blog: https://velog.io/@jm4293
 ---
 
----

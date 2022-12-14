@@ -20,9 +20,9 @@ const bodyparser = require('body-parser');
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
-/////////////////
-// login - 3001//
-/////////////////
+/////////////////////
+//// login - 3001////
+/////////////////////
 app.post('/userInfoUpdate', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -61,9 +61,9 @@ app.listen(3001, () => {
     console.log(`로그인 서버: 3001`);
 })
 
-////////////////////
-// chatting - 3002//
-////////////////////
+////////////////////////
+//// chatting - 3002////
+////////////////////////
 var http = require("http").createServer(app);
 const io = require("socket.io")(http, {
     cors: {
@@ -93,9 +93,9 @@ http.listen(3002, () => {
     console.log(`채팅 서버: 3002`);
 });
 
-////////////////////////
-// noticeboard - 3003 //
-////////////////////////
+////////////////////////////
+//// noticeboard - 3003 ////
+////////////////////////////
 app.post('/board', (req, res) => {
     connection.query('SELECT * FROM noticeboard', (err, rows, fields) => {
         if (err) {
