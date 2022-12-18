@@ -1,47 +1,49 @@
-import React, {useState} from "react";
-import {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 
 const Frame = styled.div`
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  //border: 1px solid blue;
 `;
 
-const HeaderDiv = styled.div`
-    width: 100%;
+const Header = styled.div`
+  width: 100%;
+  margin-left: 10px;
 `;
 
-const ContentDiv = styled.div`
-    width: 100%;
+const Content = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 const Table = styled.table`
-    width: 100%;
-    border-collapse: collapse;
+  width: 98%;
+  border-collapse: collapse;
 `;
 
 const Th = styled.th`
-    border: 1px solid black;
+  border: 1px solid black;
 `;
 
 const Td = styled.td`
-    border: 1px solid black;
+  border: 1px solid black;
 `;
 
 const TdClick = styled.td`
-    border: 1px solid black;
+  border: 1px solid black;
 
-    &:hover {
-        background-color : black;
-        color : white;
-    }
+  &:hover {
+    background-color: rgb(229, 229, 229);
+  }
 `;
 
-const TailDiv = styled.div`
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
+const Tail = styled.div`
+  margin: 20px 10px;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 function Noticeboard() {
@@ -87,7 +89,9 @@ function Noticeboard() {
                             <div style={{textAlign: 'center'}}>{index}</div>
                         </Td>
                         <TdClick>
-                            <div onClick={() => {move_view(item)}} style={{textAlign: 'center'}}>{item.title}</div>
+                            <div onClick={() => {
+                                move_view(item)
+                            }} style={{textAlign: 'center'}}>{item.title}</div>
                         </TdClick>
                         <Td>
                             <div style={{textAlign: 'center'}}>{item.writer}</div>
@@ -103,34 +107,24 @@ function Noticeboard() {
 
     return (
         <Frame>
-            <HeaderDiv>
-                <div style={{padding: '5px 5px'}}>
-                    <h1>전체글 보기</h1>
-                </div>
-                <div style={{padding: '5px 5px'}}>
-                    {`${count} 개의 글`}
-                </div>
-            </HeaderDiv>
-            <ContentDiv>
-                <div style={{width: '98%', height: '100%', padding: '5px 5px'}}>
-                    <Table style={{border: '2px solid black'}}>
-                        <thead>
-                            <tr>
-                                <Th style={{width: '6%'}}>index</Th>
-                                <Th style={{width: '50%'}}>제목</Th>
-                                <Th style={{width: '10%'}}>작성자</Th>
-                                <Th style={{width: '24%'}}>작성일</Th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {body_row()}
-                        </tbody>
-                    </Table>
-                </div>
-            </ContentDiv>
-            <TailDiv>
-                <button onClick={move_write} style={{marginRight: '5px'}}>글쓰기</button>
-            </TailDiv>
+            <Header>
+                <div><h1>전체글 보기</h1></div>
+                <div>{`${count} 개의 글`}</div>
+            </Header>
+            <Content>
+                <Table>
+                    <thead>
+                    <Th style={{width: '8%'}}>index</Th>
+                    <Th style={{width: '54%'}}>제목</Th>
+                    <Th style={{width: '10%'}}>작성자</Th>
+                    <Th style={{width: '28%'}}>작성일</Th>
+                    </thead>
+                    <tbody>{body_row()}</tbody>
+                </Table>
+            </Content>
+            <Tail>
+                <button onClick={move_write}>글쓰기</button>
+            </Tail>
         </Frame>
     )
 }

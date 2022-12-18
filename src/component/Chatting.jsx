@@ -1,37 +1,39 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import io from "socket.io-client";
 
 const socket = io.connect("http://localhost:3002")
 
 const Frame = styled.div`
-    width: 100%;
-    height: 100%;
-    border-left: none;
-    // display: flex;
-    // flex-wrap: wrap;
+  width: 80%;
+  height: 90%;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 10px;
 `;
 
-const MessageDiv = styled.div`
-    width: 100%;
-    height: 90%;
-    display: flex;
+const Message = styled.div`
+  width: 100%;
+  height: 92%;
+  display: flex;
 `;
 
-const SendMessageDiv = styled.div`
-    width: 350px;
+const SendMessage = styled.div`
+  width: 50%;
 `;
 
-const ReceiveMessageDiv = styled.div`
-    width: 350px;
-    height: 100%;
-    border-right: 1px solid black;
+const ReceiveMessage = styled.div`
+  width: 50%;
+  border-right: 1px solid black;
 `;
 
-const InputMessageDiv = styled.div`
-    width: 700px;
-    height: 100%;
-    border-top: 1px solid black;
+const InputMessage = styled.div`
+  width: 100%;
+  height: 8%;
+  border-top: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 function Chatting() {
@@ -80,37 +82,29 @@ function Chatting() {
 
     return (
         <Frame>
-            <MessageDiv>
-                <div>
-                    <ReceiveMessageDiv>
-                        <div style={{padding: '10px 10px'}}>
-                            <div>받은 내용</div>
-                            <p>{`닉네임: ${receiveMessageName} / 받은 내용: ${receiveMessageMsg}`}</p>
-                        </div>
-                    </ReceiveMessageDiv>
-                </div>
-                <div>
-                    <SendMessageDiv>
-                        <div style={{padding: '10px 10px'}}>
-                            <div>보낸 내용</div>
-                            <p>{`닉네임: ${sendMessageName} / 보낸 내용: ${sendMessageMsg}`}</p>
-                        </div>
-                    </SendMessageDiv>
-                </div>
-            </MessageDiv>
-
-            <div>
-                <InputMessageDiv>
-                    <form onSubmit={sendMsg} style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <div>
-                            <input type='text' onChange={inputName} value={name} name='name' id='id' placeholder='아이디' style={{margin: '5px 5px', width: '150px'}} />
-                            <input type='text' onChange={inputMsg} value={msg} name='msg' id='msg' placeholder='내용' style={{width: '300px'}}/>
-                        </div>
-                        <button type='submit' style={{margin: '5px 5px'}}>전송</button>
-                    </form>
-                </InputMessageDiv>
-            </div>
-
+            <Message>
+                <ReceiveMessage>
+                    <div style={{padding: '10px'}}>
+                        <div>받은 내용</div>
+                        <p>{`닉네임: ${receiveMessageName} / 받은 내용: ${receiveMessageMsg}`}</p>
+                    </div>
+                </ReceiveMessage>
+                <SendMessage>
+                    <div style={{padding: '10px'}}>
+                        <div>보낸 내용</div>
+                        <p>{`닉네임: ${sendMessageName} / 보낸 내용: ${sendMessageMsg}`}</p>
+                    </div>
+                </SendMessage>
+            </Message>
+            <InputMessage>
+                <form onSubmit={sendMsg} style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <div style={{marginLeft: "20px"}}>
+                        <input type='text' onChange={inputName} value={name} name='name' id='id' placeholder='아이디'/>
+                        <input type='text' onChange={inputMsg} value={msg} name='msg' id='msg' placeholder='내용' style={{width: "400px", marginLeft: "5px"}}/>
+                    </div>
+                    <button type='submit' style={{marginRight: "20px"}}>전송</button>
+                </form>
+            </InputMessage>
         </Frame>
     )
 }

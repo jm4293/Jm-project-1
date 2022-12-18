@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const Frame = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 function Home() {
     return (

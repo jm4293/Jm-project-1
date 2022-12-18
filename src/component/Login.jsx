@@ -2,10 +2,19 @@ import React, {useState} from "react";
 import styled from "styled-components";
 
 const Frame = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    //style={{display: "flex", flexDirection: "column", alignItems: "center"}}
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Input = styled.div`
+
+`;
+
+const Button = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 function Login() {
@@ -73,30 +82,19 @@ function Login() {
 
     return (
         <Frame>
-            {/*로그인 입력*/}
-            <div className='contentWrap'>
+            <Input>
                 <div>이메일</div>
-                <div className='inputWrap'>
-                    <input type='text' onChange={onChangeEmail} value={emailUpdate} placeholder='example@gmail.com'/>
-                </div>
-
+                <input type='text' onChange={onChangeEmail} value={emailUpdate} placeholder='example@gmail.com'/>
                 <div style={{marginTop: '15px'}}>비밀번호</div>
-                <div className='inputWrap'>
-                    <input type='password' onChange={onChangePassword} value={passwordUpdate} placeholder='8자 이상'/>
-                </div>
-            </div>
+                <input type='password' onChange={onChangePassword} value={passwordUpdate} placeholder='8자 이상'/>
+            </Input>
 
-            {/* 로그인 버튼 */}
-            <div style={{marginTop: '10px'}}>
-                <button onClick={onClickButtonUpdate}>회원가입</button>
-            </div>
-
-            {/* 유저 이메일 비밀번호 출력 */}
-            <div style={{marginTop: '5px'}}>
-                <button onClick={onClickButtonRead}>이메일, 비밀번호 찾기</button>
-                <div>{emailRead}</div>
-                <div>{passwordRead}</div>
-            </div>
+            <Button>
+                <button onClick={onClickButtonUpdate} style={{marginTop: "20px"}}>회원가입</button>
+                <button onClick={onClickButtonRead} style={{marginTop: "5px"}}>이메일, 비밀번호 찾기</button>
+            </Button>
+            <div>{emailRead}</div>
+            <div>{passwordRead}</div>
         </Frame>
     )
 }

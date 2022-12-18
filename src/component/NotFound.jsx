@@ -1,24 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const NotFoundiv = styled.div`
-    width: 100%;
-    // height: 100%;
-    font-size: 50px;
-    color: red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const Frame = styled.div`
+  font-size: 50px;
+  color: red;
+  margin: auto;
 `;
 
-function notFound() {
+function NotFound() {
     return (
-        <NotFoundiv>
-            <div>
-                없는 페이지
-            </div>
-        </NotFoundiv>
+        <Frame> 없는 페이지 </Frame>
     )
 }
 
-export default notFound;
+export default NotFound;

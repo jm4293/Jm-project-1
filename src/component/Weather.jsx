@@ -3,42 +3,50 @@ import styled from "styled-components";
 import axios from "axios";
 
 const Frame = styled.div`
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-25%, -50%);
+  width: 30%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-const AppWrap = styled.div`
+const Input = styled.div`  
   input {
-    width: 100%;
-    padding: 10px;
-    border: 2px black solid;
-    border-radius: 20px;    
+    border: 1px black solid;
+    border-radius: 20px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
   }
 `;
 
-const ResultWrap = styled.div`
-  width: 100%;
+const Result = styled.div`
+  width: 70%;
   border: 1px black solid;
-  margin-top: 5px;
+  margin-top: 10px;
   padding: 10px;
   border-radius: 20px;
-  
+
   .city {
     font-size: 24px;
   }
-  
+
   .temperature {
     font-size: 60px;
     margin-top: 8px;
+    text-align: center;
   }
-  
+
   .sky {
     font-size: 20px;
     margin-top: 8px;
   }
 `;
+
+const ClearButton = styled.button`
+  margin-top: 20px;
+  width: 50%;
+`
 
 function Weather() {
     const [location, setLocation] = useState('');
@@ -64,19 +72,17 @@ function Weather() {
 
     return (
         <Frame>
-            <AppWrap>
-                <div className="appContentWrap">
-                    <input placeholder="도시를 입력하세요" value={location} onChange={(e) => setLocation(e.target.value)} type="text" onKeyDown={searchWeather} style={{textAlign: 'center'}}/>
-                    {Object.keys(result).length !== 0 && (
-                        <ResultWrap>
-                            <div className="city">{result.data.name}</div>
-                            <div className="temperature">{Math.round((result.data.main.temp - 273.15) * 10) / 10}°C</div>
-                            <div className="sky">{result.data.weather[0].main}</div>
-                        </ResultWrap>
-                    )}
-                </div>
-            </AppWrap>
-            <button style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px'}} onClick={clear}>초기화</button>
+            <Input>
+                <input placeholder="도시를 입력하세요" value={location} onChange={(e) => setLocation(e.target.value)} type="text" onKeyDown={searchWeather}/>
+            </Input>
+            {Object.keys(result).length !== 0 && (
+                <Result>
+                    <div className="city">{result.data.name}</div>
+                    <div className="temperature">{Math.round((result.data.main.temp - 273.15) * 10) / 10}°C</div>
+                    <div className="sky">{result.data.weather[0].main}</div>
+                </Result>
+            )}
+            <ClearButton onClick={clear}>초기화</ClearButton>
         </Frame>
     )
 }

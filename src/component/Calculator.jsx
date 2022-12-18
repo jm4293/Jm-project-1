@@ -1,54 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 
-const FrameDiv = styled.div`
-    width: 85%;
-    height: 100%;
-    position: absolute;
-    left: 14%;
-    top: 25%;
+const Frame = styled.div`
+  width: 50%;
+  margin: auto;
 `;
 
-const DisplayDiv = styled.div`
-    width: 90%;
-    height: 100px;
-    margin-left: 40px;
-    margin-bottom: 15px;
+const Display = styled.div`
+  width: 90%;
+  height: 100px;
+  margin-left: 40px;
+  margin-bottom: 15px;
 `
 
-const DisplayNumberDiv = styled.div`
-    width: 100%;
-    height: 80%;
-    border: 2px solid black;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
+const DisplayNumber = styled.div`
+  width: 100%;
+  height: 80%;
+  border: 2px solid black;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
 `;
 
-const ButtonDiv = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    // margin: 150px 5px;
+const Button = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  // margin: 150px 5px;
 `;
 
 const NumberButton = styled.button`
-    background-color: #f2f3f5;
-    border: none;
-    font-size: 18px; 
-    border-radius: 35px;
-    margin: 3px;
-    padding: 10px
+  background-color: #f2f3f5;
+  border: none;
+  font-size: 18px;
+  border-radius: 35px;
+  margin: 3px;
+  padding: 10px
 `;
 
 const CalculationButton = styled.button`
-    background-color: #4b89dc;
-    border: none;
-    font-size: 18px; 
-    border-radius: 35px;
-    margin: 3px;
-    padding: 10px
+  background-color: #4b89dc;
+  border: none;
+  font-size: 18px;
+  border-radius: 35px;
+  margin: 3px;
+  padding: 10px
 `;
 
 function Calculator() {
@@ -119,33 +116,33 @@ function Calculator() {
     }
 
     return (
-        <FrameDiv>
-                <DisplayDiv>
-                    <DisplayNumberDiv>{displayNumber}</DisplayNumberDiv>
-                </DisplayDiv>
-                <ButtonDiv>
-                    <NumberButton onClick={clear} value={''}>()</NumberButton>
-                    <NumberButton onClick={inputCalculate} value={'%'}>%</NumberButton>
-                    <NumberButton onClick={clear}>C</NumberButton>
-                    <CalculationButton onClick={inputCalculate} value={'/'}>/</CalculationButton>
-                    <NumberButton onClick={inputNumber} value={7}>7</NumberButton>
-                    <NumberButton onClick={inputNumber} value={8}>8</NumberButton>
-                    <NumberButton onClick={inputNumber} value={9}>9</NumberButton>
-                    <CalculationButton onClick={inputCalculate} value={'*'}>*</CalculationButton>
-                    <NumberButton onClick={inputNumber} value={4}>4</NumberButton>
-                    <NumberButton onClick={inputNumber} value={5}>5</NumberButton>
-                    <NumberButton onClick={inputNumber} value={6}>6</NumberButton>
-                    <CalculationButton onClick={inputCalculate} value={'-'}>-</CalculationButton>
-                    <NumberButton onClick={inputNumber} value={1}>1</NumberButton>
-                    <NumberButton onClick={inputNumber} value={2}>2</NumberButton>
-                    <NumberButton onClick={inputNumber} value={3}>3</NumberButton>
-                    <CalculationButton onClick={inputCalculate} value={'+'}>+</CalculationButton>
-                    <NumberButton onClick={clear} value={''}>+/-</NumberButton>
-                    <NumberButton onClick={inputNumber} value={0}>0</NumberButton>
-                    <NumberButton onClick={clear} value={''}>.</NumberButton>
-                    <CalculationButton onClick={result} value={'='}>=</CalculationButton>
-                </ButtonDiv>
-        </FrameDiv>
+        <Frame>
+            <Display>
+                <DisplayNumber>{displayNumber}</DisplayNumber>
+            </Display>
+            <Button>
+                <NumberButton onClick={clear} value={''}>()</NumberButton>
+                <NumberButton onClick={inputCalculate} value={'%'}>%</NumberButton>
+                <NumberButton onClick={clear}>C</NumberButton>
+                <CalculationButton onClick={inputCalculate} value={'/'}>/</CalculationButton>
+                <NumberButton onClick={inputNumber} value={7}>7</NumberButton>
+                <NumberButton onClick={inputNumber} value={8}>8</NumberButton>
+                <NumberButton onClick={inputNumber} value={9}>9</NumberButton>
+                <CalculationButton onClick={inputCalculate} value={'*'}>*</CalculationButton>
+                <NumberButton onClick={inputNumber} value={4}>4</NumberButton>
+                <NumberButton onClick={inputNumber} value={5}>5</NumberButton>
+                <NumberButton onClick={inputNumber} value={6}>6</NumberButton>
+                <CalculationButton onClick={inputCalculate} value={'-'}>-</CalculationButton>
+                <NumberButton onClick={inputNumber} value={1}>1</NumberButton>
+                <NumberButton onClick={inputNumber} value={2}>2</NumberButton>
+                <NumberButton onClick={inputNumber} value={3}>3</NumberButton>
+                <CalculationButton onClick={inputCalculate} value={'+'}>+</CalculationButton>
+                <NumberButton onClick={clear} value={''}>+/-</NumberButton>
+                <NumberButton onClick={inputNumber} value={0}>0</NumberButton>
+                <NumberButton onClick={clear} value={''}>.</NumberButton>
+                <CalculationButton onClick={result} value={'='}>=</CalculationButton>
+            </Button>
+        </Frame>
     )
 }
 
