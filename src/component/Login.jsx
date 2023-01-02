@@ -71,8 +71,8 @@ function Login() {
                 // setEmailRead([...emailRead, json[0].user_email]);
 
                 json.map((content) => {
-                    console.log(content.user_email);
-                    console.log(content.user_password);
+                    console.log(content.id);
+                    console.log(content.password);
                 })
             })
             .catch((err) => {

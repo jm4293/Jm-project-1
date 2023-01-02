@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 
-// DB 설정
+// //DB 설정
 const mysql = require('mysql');
 const connection = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
     password: '123456789',
-    database: 'express_db'
+    database: 'JM-project-1'
 })
 connection.connect();
 
@@ -21,7 +21,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
 /////////////////////
-//// login - 3001////
+//// Login - 3001////
 /////////////////////
 app.post('/userInfoUpdate', (req, res) => {
     const email = req.body.email;
@@ -32,7 +32,7 @@ app.post('/userInfoUpdate', (req, res) => {
         password: password
     };
 
-    connection.query('INSERT INTO user_info (user_email, user_password) VALUES(?, ?)', [email, password], (err, rows, fields) => {
+    connection.query('INSERT INTO Login (id, password) VALUES(?, ?)', [email, password], (err, rows, fields) => {
         if (err) {
             console.log("로그인 서버 - 회원가입 성공");
             console.log(err);
@@ -45,7 +45,7 @@ app.post('/userInfoUpdate', (req, res) => {
 })
 
 app.post('/userInfoRead', (req, res) => {
-    connection.query('SELECT * FROM user_info', (err, rows, fields) => {
+    connection.query('SELECT * FROM Login', (err, rows, fields) => {
         if (err) {
             console.log("로그인 서버 - 이메일, 비민번호 찾기 실패");
             console.log(err);
@@ -97,7 +97,7 @@ http.listen(3002, () => {
 //// noticeboard - 3003 ////
 ////////////////////////////
 app.post('/board', (req, res) => {
-    connection.query('SELECT * FROM noticeboard', (err, rows, fields) => {
+    connection.query('SELECT * FROM NoticeBoard', (err, rows, fields) => {
         if (err) {
             console.log("게시판 서버 - 게시판 불러오기 실패");
             console.log(err);
@@ -115,7 +115,7 @@ app.post('/board/register', (req, res) => {
     const content = req.body.content;
     const date = req.body.date;
 
-    connection.query('INSERT INTO noticeboard (title, writer, content, date) VALUES(?, ?, ?, ?)', [title, writer, content, date], (err, rows, fields) => {
+    connection.query('INSERT INTO NoticeBoard (title, writer, content, date) VALUES(?, ?, ?, ?)', [title, writer, content, date], (err, rows, fields) => {
         if (err) {
             console.log("게시판 서버 - 게시판 등록 실패");
             console.log(err);
