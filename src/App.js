@@ -12,19 +12,6 @@ import NotFound from './component/NotFound';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import styled from "styled-components";
 
-const Frame = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  width: 70%;
-  height: 90%;
-  border: 1px solid black;
-  border-radius: 10px;
-
-`
-
 function App() {
     return (
         <BrowserRouter>
@@ -46,5 +33,17 @@ function App() {
         </BrowserRouter>
     );
 }
+
+const Frame = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  width: 70%;
+  height: 90%;
+  border: 1px solid black;
+  border-radius: 10px;
+`
 
 export default App;

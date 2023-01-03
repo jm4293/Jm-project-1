@@ -1,22 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 
-const Frame = styled.div`
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Input = styled.div`
-
-`;
-
-const Button = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 function Login() {
     const [emailUpdate, setEmailUpdate] = useState('');
     const [passwordUpdate, setPasswordUpdate] = useState('');
@@ -98,5 +82,21 @@ function Login() {
         </Frame>
     )
 }
+
+const Frame = styled.div`
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Input = styled.div`
+
+`;
+
+const Button = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export default Login;

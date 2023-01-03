@@ -2,47 +2,6 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import {addMonths, subMonths} from "date-fns";
 
-const Frame = styled.div`
-  width: 70%;
-  height: 90%;
-  margin: auto;
-`;
-
-const Header = styled.div`
-  width: 100%;
-  height: 3%;
-  padding: 5px 5px;
-`;
-
-const Month = styled.div`
-  width: 100%;
-  height: 7%;
-  border: 2px solid black;
-  border-radius: 10px;
-  display: flex;
-`;
-
-const MonthList = styled.div`
-  width: calc(100% / 7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Day = styled.div`
-  width: 100%;
-  height: 90%;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const DayList = styled.div`
-  width: calc(100% / 7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 function Calendar() {
     const monthColumn = ['일', '월', '화', '수', '목', '금', '토'];
     const [current, setCurrent] = useState(new Date())
@@ -121,5 +80,46 @@ function Calendar() {
         </Frame>
     )
 }
+
+const Frame = styled.div`
+  width: 70%;
+  height: 90%;
+  margin: auto;
+`;
+
+const Header = styled.div`
+  width: 100%;
+  height: 3%;
+  padding: 5px 5px;
+`;
+
+const Month = styled.div`
+  width: 100%;
+  height: 7%;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+`;
+
+const MonthList = styled.div`
+  width: calc(100% / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Day = styled.div`
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const DayList = styled.div`
+  width: calc(100% / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default Calendar;

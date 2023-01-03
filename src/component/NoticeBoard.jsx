@@ -2,50 +2,6 @@ import React, {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 
-const Frame = styled.div`
-  width: 100%;
-  height: 100%;
-  //border: 1px solid blue;
-`;
-
-const Header = styled.div`
-  width: 100%;
-  margin-left: 10px;
-`;
-
-const Content = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-const Table = styled.table`
-  width: 98%;
-  border-collapse: collapse;
-`;
-
-const Th = styled.th`
-  border: 1px solid black;
-`;
-
-const Td = styled.td`
-  border: 1px solid black;
-`;
-
-const TdClick = styled.td`
-  border: 1px solid black;
-
-  &:hover {
-    background-color: rgb(229, 229, 229);
-  }
-`;
-
-const Tail = styled.div`
-  margin: 20px 10px;
-  display: flex;
-  justify-content: flex-end;
-`;
-
 function Noticeboard() {
     const [board, setBoard] = useState([]);
     const [count, setCount] = useState(0);
@@ -128,5 +84,49 @@ function Noticeboard() {
         </Frame>
     )
 }
+
+const Frame = styled.div`
+  width: 100%;
+  height: 100%;
+  //border: 1px solid blue;
+`;
+
+const Header = styled.div`
+  width: 100%;
+  margin-left: 10px;
+`;
+
+const Content = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const Table = styled.table`
+  width: 98%;
+  border-collapse: collapse;
+`;
+
+const Th = styled.th`
+  border: 1px solid black;
+`;
+
+const Td = styled.td`
+  border: 1px solid black;
+`;
+
+const TdClick = styled.td`
+  border: 1px solid black;
+
+  &:hover {
+    background-color: rgb(229, 229, 229);
+  }
+`;
+
+const Tail = styled.div`
+  margin: 20px 10px;
+  display: flex;
+  justify-content: flex-end;
+`;
 
 export default Noticeboard;

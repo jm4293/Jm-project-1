@@ -20,6 +20,10 @@ const bodyparser = require('body-parser');
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
+app.listen(3003, () => {
+    console.log(`게시판 서버: 3003`);
+});
+
 /////////////////////
 //// Login - 3001////
 /////////////////////
@@ -124,12 +128,4 @@ app.post('/board/register', (req, res) => {
             res.send(rows);
         }
     });
-});
-
-app.post('/board/view/comment', (req, res) => {
-
-});
-
-app.listen(3003, () => {
-    console.log(`게시판 서버: 3003`);
 });

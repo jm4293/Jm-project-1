@@ -4,38 +4,6 @@ import io from "socket.io-client";
 
 const socket = io.connect("http://localhost:3002")
 
-const Frame = styled.div`
-  width: 80%;
-  height: 90%;
-  margin: auto;
-  border: 1px solid black;
-  border-radius: 10px;
-`;
-
-const Message = styled.div`
-  width: 100%;
-  height: 92%;
-  display: flex;
-`;
-
-const SendMessage = styled.div`
-  width: 50%;
-`;
-
-const ReceiveMessage = styled.div`
-  width: 50%;
-  border-right: 1px solid black;
-`;
-
-const InputMessage = styled.div`
-  width: 100%;
-  height: 8%;
-  border-top: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
 function Chatting() {
     const [name, setName] = useState('');
     const [msg, setMsg] = useState('');
@@ -108,5 +76,37 @@ function Chatting() {
         </Frame>
     )
 }
+
+const Frame = styled.div`
+  width: 80%;
+  height: 90%;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+`;
+
+const Message = styled.div`
+  width: 100%;
+  height: 92%;
+  display: flex;
+`;
+
+const SendMessage = styled.div`
+  width: 50%;
+`;
+
+const ReceiveMessage = styled.div`
+  width: 50%;
+  border-right: 1px solid black;
+`;
+
+const InputMessage = styled.div`
+  width: 100%;
+  height: 8%;
+  border-top: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
 export default Chatting;

@@ -2,36 +2,6 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 
-const Frame = styled.div`
-    width: 100%;
-    height: 100%;
-`;
-
-const HeaderDiv = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    // border: 1px solid red;
-`;
-
-const TitleDiv = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
-const ContentDiv = styled.div`
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
-const TailDiv = styled.div`
-    display: flex;
-    justify-content: flex-end;
-`;
-
 function Write() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -112,5 +82,35 @@ function Write() {
         </Frame>
     )
 }
+
+const Frame = styled.div`
+    width: 100%;
+    height: 100%;
+`;
+
+const HeaderDiv = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    // border: 1px solid red;
+`;
+
+const TitleDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const ContentDiv = styled.div`
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const TailDiv = styled.div`
+    display: flex;
+    justify-content: flex-end;
+`;
 
 export default Write;
