@@ -7,7 +7,7 @@
 - styled-components
     - npm install styled-components
     - version: 5.3.6
-- 
+
 - react-router-dom
     - npm install react-router-dom --save
     - version: 6.4.2
