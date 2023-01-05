@@ -1,4 +1,4 @@
-## 리액트 프로젝트
+# 리액트 프로젝트
 
 ## 개발언어 
 - React
@@ -7,32 +7,22 @@
 - styled-components
     - npm install styled-components
     - version: 5.3.6
-
-<br>
-
+- 
 - react-router-dom
     - npm install react-router-dom --save
     - version: 6.4.2
 
-<br>
-
 - socket.io
     - npm install socket.io
     - version: 4.5.4
-
-<br>
-
+    
 - nodemon
     - npm install nodemon
     - version: 2.0.20
 
-<br>
-
 - express
     - npm install express
     - version: 4.18.2
-
-<br>
 
 - axios
     - npm install axios
