@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function Noticeboard() {
@@ -8,11 +8,7 @@ function Noticeboard() {
 
     useEffect(() => {
         fetch('http://localhost:8002/board', {
-            method: 'post',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify()
+            method: 'get'
         })
             .then((res) => {
                 return res.json()
@@ -29,7 +25,7 @@ function Noticeboard() {
     const navigate = useNavigate();
 
     const move_view = (item) => {
-        navigate('/noticeboard/view', {state: {title: item.title, writer: item.writer, content: item.content, date: item.date}});
+        navigate('/noticeboard/view', { state: { title: item.title, writer: item.writer, content: item.content, date: item.date } });
     }
 
     const move_write = () => {
@@ -42,18 +38,18 @@ function Noticeboard() {
                 return (
                     <tr key={index}>
                         <Td>
-                            <div style={{textAlign: 'center'}}>{index}</div>
+                            <div style={{ textAlign: 'center' }}>{index}</div>
                         </Td>
                         <TdClick>
                             <div onClick={() => {
                                 move_view(item)
-                            }} style={{textAlign: 'center'}}>{item.title}</div>
+                            }} style={{ textAlign: 'center' }}>{item.title}</div>
                         </TdClick>
                         <Td>
-                            <div style={{textAlign: 'center'}}>{item.writer}</div>
+                            <div style={{ textAlign: 'center' }}>{item.writer}</div>
                         </Td>
                         <Td>
-                            <div style={{textAlign: 'center'}}>{item.date}</div>
+                            <div style={{ textAlign: 'center' }}>{item.date}</div>
                         </Td>
                     </tr>
                 )
@@ -70,10 +66,10 @@ function Noticeboard() {
             <Content>
                 <Table>
                     <thead>
-                    <Th style={{width: '8%'}}>index</Th>
-                    <Th style={{width: '54%'}}>제목</Th>
-                    <Th style={{width: '10%'}}>작성자</Th>
-                    <Th style={{width: '28%'}}>작성일</Th>
+                        <Th style={{ width: '8%' }}>index</Th>
+                        <Th style={{ width: '54%' }}>제목</Th>
+                        <Th style={{ width: '10%' }}>작성자</Th>
+                        <Th style={{ width: '28%' }}>작성일</Th>
                     </thead>
                     <tbody>{body_row()}</tbody>
                 </Table>
