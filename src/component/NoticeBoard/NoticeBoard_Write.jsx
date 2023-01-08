@@ -53,6 +53,7 @@ function Write() {
             .catch((err) => {
                 console.log(err);
             })
+            navigate(`/noticeboard`)
     }
 
     const onClickBackPage = () => {

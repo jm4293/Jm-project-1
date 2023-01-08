@@ -41,9 +41,7 @@ function Noticeboard() {
                             <div style={{ textAlign: 'center' }}>{index}</div>
                         </Td>
                         <TdClick>
-                            <div onClick={() => {
-                                move_view(item)
-                            }} style={{ textAlign: 'center' }}>{item.title}</div>
+                            <div onClick={() => { move_view(item) }} style={{ textAlign: 'center' }}>{item.title}</div>
                         </TdClick>
                         <Td>
                             <div style={{ textAlign: 'center' }}>{item.writer}</div>
@@ -112,6 +110,7 @@ const Td = styled.td`
 `;
 
 const TdClick = styled.td`
+    cursor: pointer;
   border: 1px solid black;
 
   &:hover {
