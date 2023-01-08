@@ -6,10 +6,11 @@ function Weather() {
   const [location, setLocation] = useState('');
   const [result, setResult] = useState({});
   const API_KEY = "6bedce92f708cdeb65b084ee01b825c0"; // 각자 개인의 API KEY를 발급받아 사용
+
+
+
   let date = new Date();
   let now = `${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일`
-
-  console.log(now)
 
   const searchWeather = async (e) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`;
@@ -51,6 +52,7 @@ function Weather() {
               </Result>
           } 
           <Button onClick={searchWeather}>선택</Button>
+          <Button onClick={() => window.location.reload()}>돌아가기</Button>
       </div>
     </Frame>
   )
@@ -66,12 +68,12 @@ const Frame = styled.div`
 `;
 
 const Select = styled.select`  
-  width: 100%;
+  width: 200%;
   cursor: pointer;
 `;
 
 const Result = styled.div`
-  width: 100%;
+  width: 200%;
   height: 100%;
   border: 1px black solid;
   margin-top: 10px;
@@ -95,7 +97,7 @@ const Result = styled.div`
 `;
 
 const Button = styled.button`
-  width: 100%;
+  width: 200%;
   margin-top: 10px;
   cursor: pointer;
 `;

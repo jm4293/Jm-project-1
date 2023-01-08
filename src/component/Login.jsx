@@ -70,7 +70,9 @@ function Member() {
                 }
             }
         )
-        .then(res => console.log(res))
+        .then(res => {
+            alert("가입완료! " + res.data.email)
+        })
         .catch(err => console.log(err))
     }
 
@@ -85,7 +87,7 @@ function Member() {
             }
         )
         .then((res) => {
-            alert(res.data)
+            alert("비밀번호: " + res.data)
         })
         .catch(err => console.log(err))
     }
@@ -96,7 +98,7 @@ function Member() {
                 <div>이메일</div>
                 <input type='text' onChange={(e) => setEmailUpdate(e.target.value)} placeholder='이메일' />
                 <div style={{ marginTop: '15px' }}>비밀번호</div>
-                <input type='password' onChange={(e) => setPasswordUpdate(e.target.value)} placeholder='비밀번호' />
+                <input type='text' onChange={(e) => setPasswordUpdate(e.target.value)} placeholder='비밀번호' />
             </Input>
             <Button>
                 <button onClick={Login} style={{ marginTop: "20px", cursor: "pointer" }}>로그인</button>

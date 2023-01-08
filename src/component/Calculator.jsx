@@ -100,50 +100,52 @@ function Calculator() {
 }
 
 const Frame = styled.div`
-  width: 50%;
-  margin: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `;
 
 const Display = styled.div`
-  width: 90%;
-  height: 100px;
-  margin-left: 40px;
-  margin-bottom: 15px;
-`
+    width: 30%;
+    margin-bottom: 15px;
+`;
 
 const DisplayNumber = styled.div`
-  width: 100%;
-  height: 80%;
-  border: 2px solid black;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 25px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
 `;
 
 const Button = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  // margin: 150px 5px;
+    width: 30%;
+    height: 30%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 `;
 
 const NumberButton = styled.button`
-  background-color: #f2f3f5;
-  border: none;
-  font-size: 18px;
-  border-radius: 35px;
-  margin: 3px;
-  padding: 10px
+    background-color: #f2f3f5;
+    border: none;
+    font-size: 18px;
+    border-radius: 35px;
+    margin: 3px;
+    padding: 10px
 `;
 
 const CalculationButton = styled.button`
-  background-color: #4b89dc;
-  border: none;
-  font-size: 18px;
-  border-radius: 35px;
-  margin: 3px;
-  padding: 10px
+    background-color: #4b89dc;
+    border: none;
+    font-size: 18px;
+    border-radius: 35px;
+    margin: 3px;
+    padding: 10px
 `;
 
 export default Calculator;
