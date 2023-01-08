@@ -30,8 +30,25 @@ const axios = require('axios');
 /////////////////////
 
 // 로그인
-app.get('/Login', (req, res) => {
+app.post('/Login', (req, res) => {
+    const email = req.body.user.email
+    const password = req.body.user.password;
 
+    try {
+        connection.query(`SELECT * FROM Login WHERE id = ? AND password = ?`, [email, password], (err, result, fields) => {
+            if(result.length !== 0){
+                res.send("로그인 성공");
+                res.end();
+            }
+            else {
+                res.send("로그인 실패");
+                res.end();
+            }
+        })
+    }
+    catch (e) {
+        console.log("error: ", e);
+    }
 })
 
 
@@ -40,23 +57,21 @@ app.post('/LoginRegister', (req, res) => {
     const email = req.body.user.email
     const password = req.body.user.password;
 
-    console.log(req.body)
-    console.log(req.query)
-
     const response = {
         email: email,
         password: password
     };
 
     try {
-        connection.query('INSERT INTO Login (id, password) VALUES(?, ?)', [email, password], (err, rows, fields) => {
-            if (err) {
+        connection.query('INSERT INTO Login (id, password) VALUES(?, ?)', [email, password], (error, result, fields) => {
+            if (error) {
                 console.log("로그인 서버 - 회원가입 성공");
-                console.log(err);
+                console.log(error);
             }
             else {
                 console.log("로그인 서버 - 회원가입 완료")
                 res.send(response);
+                res.end();
             }
         })
     }
@@ -66,17 +81,18 @@ app.post('/LoginRegister', (req, res) => {
 })
 
 // 비밀번호 찾기
-app.post('/LoginSearch', (req, res) => {
-    connection.query('SELECT * FROM Login', (err, rows, fields) => {
-        if (err) {
-            console.log("로그인 서버 - 이메일, 비민번호 찾기 실패");
-            console.log(err);
-        }
-        else {
-            console.log("로그인 서버 - 이메일, 비민번호 찾기 성공");
-            res.send(rows);
-        }
-    })
+app.get('/LoginSearch', (req, res) => {
+    const email = req.query.email
+
+    try {
+        connection.query(`SELECT password FROM Login WHERE id = ?`, [email], (err, result, fields) => {
+            res.send(result[0].password);
+            res.end();
+        })
+    }
+    catch (e) {
+        console.log("error: ", e);
+    }
 })
 
 app.listen(8000, () => {
@@ -118,15 +134,15 @@ http.listen(8001, () => {
 ////////////////////////////
 //// noticeboard - 8002 ////
 ////////////////////////////
-app.post('/board', (req, res) => {
-    connection.query('SELECT * FROM NoticeBoard', (err, rows, fields) => {
+app.get('/board', (req, res) => {
+    connection.query('SELECT * FROM NoticeBoard', (err, result, fields) => {
         if (err) {
             console.log("게시판 서버 - 게시판 불러오기 실패");
             console.log(err);
         }
         else {
             console.log("게시판 서버 - 게시판 불러오기 성공");
-            res.send(rows);
+            res.send(result);
         }
     });
 });
@@ -137,13 +153,13 @@ app.post('/board/register', (req, res) => {
     const content = req.body.content;
     const date = req.body.date;
 
-    connection.query('INSERT INTO NoticeBoard (title, writer, content, date) VALUES(?, ?, ?, ?)', [title, writer, content, date], (err, rows, fields) => {
+    connection.query('INSERT INTO NoticeBoard (title, writer, content, date) VALUES(?, ?, ?, ?)', [title, writer, content, date], (err, result, fields) => {
         if (err) {
             console.log("게시판 서버 - 게시판 등록 실패");
             console.log(err);
         } else {
             console.log("게시판 서버 - 게시판 등록 성공")
-            res.send(rows);
+            res.send(result);
         }
     });
 });

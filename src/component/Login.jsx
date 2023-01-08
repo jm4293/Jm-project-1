@@ -16,9 +16,33 @@ function Member() {
             return
         }
 
-        const res = await axios.get(
-
+        await axios.post(
+            "http://localhost:8000/Login",
+            JSON.stringify({
+                user: {
+                    email: emailUpdate,
+                    password: passwordUpdate
+                }
+            }),
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                params: {
+                    email: emailUpdate,
+                    password: passwordUpdate
+                }
+            }
         )
+        .then((res) => {
+            if(res.data === "로그인 성공"){
+                alert("로그인 성공");
+            }
+            else {
+                alert("로그인 실패");
+            }
+        })
+        .catch(err => console.log(err))
     }
 
     // 회원가입
@@ -51,29 +75,19 @@ function Member() {
     }
 
     // 비밀번호 찾기
-    const Search = () => {
-        fetch('http://localhost:8000/LoginSearch', {
-            method: 'post',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify()
+    const Search = async () => {
+        await axios.get(
+            "http://localhost:8000/LoginSearch",
+            {
+                params: {
+                    email: emailUpdate,
+                }
+            }
+        )
+        .then((res) => {
+            alert(res.data)
         })
-            .then((res) => {
-                return res.json()
-            })
-            .then((json) => {
-                console.log(json);  // #02
-                // setEmailRead([...emailRead, json[0].user_email]);
-
-                json.map((content) => {
-                    console.log(content.id);
-                    console.log(content.password);
-                })
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+        .catch(err => console.log(err))
     }
 
     return (
