@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import {addMonths, subMonths} from "date-fns";
+import { addMonths, subMonths } from "date-fns";
 
 function Calendar() {
     const monthColumn = ['일', '월', '화', '수', '목', '금', '토'];
@@ -19,19 +19,19 @@ function Calendar() {
         const today = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`
 
         return (
-            <div style={{display: 'flex'}}>
-                <div style={{width: '40%'}}>
-                    <div className="TodayMonth" style={{fontWeight: 'bold', marginLeft: '5px'}}>
+            <div style={{ display: 'flex' }}>
+                <div style={{ width: '40%' }}>
+                    <div className="TodayMonth" style={{ fontWeight: 'bold', marginLeft: '5px' }}>
                         Today: {today}
                     </div>
                 </div>
-                <div style={{width: '60%'}}>
-                    <div className="Button" style={{display: 'flex', justifyContent: 'right'}}>
+                <div style={{ width: '60%' }}>
+                    <div className="Button" style={{ display: 'flex', justifyContent: 'right' }}>
                         <div className="PrevButton">
-                            <button onClick={prevButton} style={{fontWeight: 'bold', marginRight: '5px'}}>prev</button>
+                            <button onClick={prevButton} style={{ fontWeight: 'bold', marginRight: '5px' }}>prev</button>
                         </div>
                         <div className="NextButton">
-                            <button onClick={nextButton} style={{fontWeight: 'bold', marginRight: '10px'}}>next</button>
+                            <button onClick={nextButton} style={{ fontWeight: 'bold', marginRight: '10px' }}>next</button>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ function Calendar() {
     }
 
     const MonthCell = () => {
-        return monthColumn.map((element, index) => (<MonthList style={{fontWeight: 'bold'}} key={index}>{element}</MonthList>))
+        return monthColumn.map((element, index) => (<MonthList style={{ fontWeight: 'bold' }} key={index}>{element}</MonthList>))
     }
 
     const DayCell = () => {
@@ -68,34 +68,38 @@ function Calendar() {
 
     return (
         <Frame>
-            <Header>
-                <HeaderCell/>
-            </Header>
-            <Month>
-                <MonthCell/>
-            </Month>
-            <Day>
-                <DayCell/>
-            </Day>
+            <div>
+                <Header>
+                    <HeaderCell />
+                </Header>
+                <Month>
+                    <MonthCell />
+                </Month>
+                <Day>
+                    <DayCell />
+                </Day>
+            </div>
         </Frame>
     )
 }
 
 const Frame = styled.div`
-  width: 70%;
-  height: 90%;
-  margin: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Header = styled.div`
-  width: 100%;
-  height: 3%;
+  width: 50vw;
+  height: 5vh;
   padding: 5px 5px;
 `;
 
 const Month = styled.div`
-  width: 100%;
-  height: 7%;
+  width: 50vw;
+  height: 5vh;
   border: 2px solid black;
   border-radius: 10px;
   display: flex;
@@ -109,8 +113,8 @@ const MonthList = styled.div`
 `;
 
 const Day = styled.div`
-  width: 100%;
-  height: 90%;
+  width: 50vw;
+  height: 50vh;
   display: flex;
   flex-wrap: wrap;
 `;

@@ -3,14 +3,18 @@ import styled from "styled-components";
 
 function NotFound() {
     return (
-        <Frame> 없는 페이지 </Frame>
+        <Frame> NOT FOUND PAGE </Frame>
     )
 }
 
 const Frame = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 50px;
   color: red;
-  margin: auto;
 `;
 
 export default NotFound;

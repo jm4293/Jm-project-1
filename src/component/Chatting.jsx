@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:3002")
+const socket = io.connect("http://localhost:8001")
 
 function Chatting() {
     const [name, setName] = useState('');
@@ -78,11 +78,8 @@ function Chatting() {
 }
 
 const Frame = styled.div`
-  width: 80%;
-  height: 90%;
-  margin: auto;
-  border: 1px solid black;
-  border-radius: 10px;
+  width: 100%;
+  height: 100%;
 `;
 
 const Message = styled.div`
