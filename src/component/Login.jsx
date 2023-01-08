@@ -1,46 +1,58 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
-function Login() {
-    const [emailUpdate, setEmailUpdate] = useState('');
-    const [passwordUpdate, setPasswordUpdate] = useState('');
+function Member() {
+    const [emailUpdate, setEmailUpdate] = useState('');             // 입력되는 이메일
+    const [passwordUpdate, setPasswordUpdate] = useState('');       // 입력되는 비밀번호
 
     const [emailRead, setEmailRead] = useState([]);
     const [passwordRead, setPasswordRead] = useState([]);
 
-    const onChangeEmail = (e) => {
-        setEmailUpdate(e.target.value);
-    }
+    // 로그인
+    const Login = async () => {
+        if (emailUpdate === '' || passwordUpdate === '') {
+            alert('아이디를 입력해 주세요')
+            return
+        }
 
-    const onChangePassword = (e) => {
-        setPasswordUpdate(e.target.value);
+        const res = await axios.get(
+
+        )
     }
 
     // 회원가입
-    // emailUpdate, passwordUpdate db에 저장
-    const onClickButtonUpdate = () => {
-        const post = {
-            email: emailUpdate,
-            password: passwordUpdate
+    const Register = async () => {
+        if (emailUpdate === '' || passwordUpdate === '') {
+            alert('아이디를 입력해 주세요')
+            return
         }
 
-        fetch('http://localhost:3001/userInfoUpdate', {
-            method: 'post',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(post)
-        })
-            .then((res) => res.json())
-            .then((json) => {
-                console.log(json);  // #01 client에서 입력한 email, password을 server에서 받고 다시 client로 받기
-            })
+        await axios.post(
+            "http://localhost:8000/LoginRegister",
+            JSON.stringify({
+                user: {
+                    email: emailUpdate,
+                    password: passwordUpdate
+                }
+            }),
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                params: {
+                    email: emailUpdate,
+                    password: passwordUpdate
+                }
+            }
+        )
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
 
-    // 이메일, 비밀번호 찾기
-    // emailUpdate, passwordUpdate db에서 불러오기
-    const onClickButtonRead = () => {
-        fetch('http://localhost:3001/userInfoRead', {
+    // 비밀번호 찾기
+    const Search = () => {
+        fetch('http://localhost:8000/LoginSearch', {
             method: 'post',
             headers: {
                 'content-type': 'application/json',
@@ -68,26 +80,26 @@ function Login() {
         <Frame>
             <Input>
                 <div>이메일</div>
-                <input type='text' onChange={onChangeEmail} value={emailUpdate} placeholder='example@gmail.com'/>
-                <div style={{marginTop: '15px'}}>비밀번호</div>
-                <input type='password' onChange={onChangePassword} value={passwordUpdate} placeholder='8자 이상'/>
+                <input type='text' onChange={(e) => setEmailUpdate(e.target.value)} placeholder='이메일' />
+                <div style={{ marginTop: '15px' }}>비밀번호</div>
+                <input type='password' onChange={(e) => setPasswordUpdate(e.target.value)} placeholder='비밀번호' />
             </Input>
-
             <Button>
-                <button onClick={onClickButtonUpdate} style={{marginTop: "20px"}}>회원가입</button>
-                <button onClick={onClickButtonRead} style={{marginTop: "5px"}}>이메일, 비밀번호 찾기</button>
+                <button onClick={Login} style={{ marginTop: "20px", cursor: "pointer" }}>로그인</button>
+                <button onClick={Register} style={{ marginTop: "5px", cursor: "pointer" }}>회원가입</button>
+                <button onClick={Search} style={{ marginTop: "5px", cursor: "pointer" }}>비밀번호 찾기</button>
             </Button>
-            <div>{emailRead}</div>
-            <div>{passwordRead}</div>
         </Frame>
     )
 }
 
 const Frame = styled.div`
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Input = styled.div`
@@ -95,8 +107,8 @@ const Input = styled.div`
 `;
 
 const Button = styled.div`
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 `;
 
-export default Login;
+export default Member;

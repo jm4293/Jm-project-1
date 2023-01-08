@@ -16,39 +16,57 @@ const cors = require('cors');
 app.use(cors());
 
 // bodyparser 설정
-const bodyparser = require('body-parser');
-app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
+// const bodyparser = require('body-parser');
+// app.use(bodyparser.json());
+// app.use(bodyparser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 
-app.listen(3003, () => {
-    console.log(`게시판 서버: 3003`);
-});
+// Axios 설정
+const axios = require('axios');
 
 /////////////////////
-//// Login - 3001////
+//// Login - 8000////
 /////////////////////
-app.post('/userInfoUpdate', (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
 
-    const sendText = {
+// 로그인
+app.get('/Login', (req, res) => {
+
+})
+
+
+// 회원 가입
+app.post('/LoginRegister', (req, res) => {
+    const email = req.body.user.email
+    const password = req.body.user.password;
+
+    console.log(req.body)
+    console.log(req.query)
+
+    const response = {
         email: email,
         password: password
     };
 
-    connection.query('INSERT INTO Login (id, password) VALUES(?, ?)', [email, password], (err, rows, fields) => {
-        if (err) {
-            console.log("로그인 서버 - 회원가입 성공");
-            console.log(err);
-        }
-        else {
-            console.log("로그인 서버 - 회원가입 완료")
-            res.send(sendText);
-        }
-    })
+    try {
+        connection.query('INSERT INTO Login (id, password) VALUES(?, ?)', [email, password], (err, rows, fields) => {
+            if (err) {
+                console.log("로그인 서버 - 회원가입 성공");
+                console.log(err);
+            }
+            else {
+                console.log("로그인 서버 - 회원가입 완료")
+                res.send(response);
+            }
+        })
+    }
+    catch (e) {
+        console.log("error: ", e);
+    }
 })
 
-app.post('/userInfoRead', (req, res) => {
+// 비밀번호 찾기
+app.post('/LoginSearch', (req, res) => {
     connection.query('SELECT * FROM Login', (err, rows, fields) => {
         if (err) {
             console.log("로그인 서버 - 이메일, 비민번호 찾기 실패");
@@ -61,18 +79,18 @@ app.post('/userInfoRead', (req, res) => {
     })
 })
 
-app.listen(3001, () => {
+app.listen(8000, () => {
     console.log(`로그인 서버: 3001`);
 })
 
 ////////////////////////
-//// chatting - 3002////
+//// chatting - 8001////
 ////////////////////////
 var http = require("http").createServer(app);
 const io = require("socket.io")(http, {
     cors: {
-        // origin: "*"
-        origin: "http://localhost:3000",
+        origin: "*",
+        // origin: "http://localhost:3000",
         methods: ["GET", "POST"]
     }
 });
@@ -93,12 +111,12 @@ io.on("connection", (socket) => {
     })
 });
 
-http.listen(3002, () => {
+http.listen(8001, () => {
     console.log(`채팅 서버: 3002`);
 });
 
 ////////////////////////////
-//// noticeboard - 3003 ////
+//// noticeboard - 8002 ////
 ////////////////////////////
 app.post('/board', (req, res) => {
     connection.query('SELECT * FROM NoticeBoard', (err, rows, fields) => {
@@ -128,4 +146,8 @@ app.post('/board/register', (req, res) => {
             res.send(rows);
         }
     });
+});
+
+app.listen(8002, () => {
+    console.log(`게시판 서버: 3003`);
 });
